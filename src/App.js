@@ -1,12 +1,27 @@
 import './App.css';
-import Left from './Left.js'
-import Right from './Right'
+import MiniLibrary from './MiniLibrary.js'
+import CurrentlyPlaying from './CurrentlyPlaying.js'
+import SearchBar from './SearchBar.js'
+import Browse from './Browse';
+import SearchResults from './SearchResults';
+import ArtistOverview from './ArtistOverview';
+import ArtistAlbumView from './ArtistAlbumView';
+import ArtistSongView from './ArtistSongView';
+import TrackListView from './TrackListView';
+
 
 function App() {
   return (
     <div>
-      <Right />
-      <Left />
+      <MiniLibrary />
+      <CurrentlyPlaying />
+      <SearchBar />
+      <Browse />
+      <SearchResults />
+      <ArtistOverview />
+      <ArtistAlbumView />
+      <ArtistSongView />
+      <TrackListView />
     </div>
   );
 }; 
