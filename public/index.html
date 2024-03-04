@@ -25,22 +25,29 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Spotify Playlist</title>
-    <link rel="'stylesheet" href="/src/index.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <nav>
-      <p>Powered By <a>GoodBoi Inc.</a></p>
-      <p><a>Home</a></p>
-      <p><a>Link Spotify</a></p>
+      <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>
+      <div>
+        <p><a target="_blank" href="./index.html">Home</a></p>
+        <p><a>Link Spotify</a></p>
+      </div>
     </nav>
+    <div class="spacer"></div>
     <main>
-      <section id="introPage">
-        <h2>A Web Application That Works With</h2>
-        <h1>Jamminn'</h1>
-        <h2>Your spotify account to create and export your playlists</h2>
-        <div class="button">
-          <h3>Start</h3>
+      <section id="welcomePage">
+        <div class='content'>
+          <h2>A Web Application That Works With</h2>
+          <h1>Jamminn'</h1>
+          <h2>Your spotify account to create and export your playlists</h2>
         </div>
+        <div class="spacer" id="spacer"></div>
+        <div class="startScroll">
+          <a href="#spacer">Start</a>
+        </div>
+        <div class="spacer"></div>
       </section>
       <section id="startPage">
         <div class="button">
@@ -48,10 +55,7 @@
         </div>
         <h1>Here is the text describing why we have to link to our spotify</h1>
       </section>
-      <section id="app">
-        <div id="left"></div>
-        <div id="right"></div>
-      </section>
+      <section id="app"></section>
     </main>
   </body>
 </html>

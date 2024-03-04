@@ -1,0 +1,36 @@
+.MiniLibrary{
+    width: auto; 
+    height: auto; 
+    padding: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem;
+    
+}
+
+.MiniLibrary h1{
+    font-size: 2rem;
+    border-left: 2px solid black;
+    padding: 1rem;
+}
+
+.MiniLibrary div{
+    height: 5%; 
+    border-bottom: 1px solid gray; 
+    width: 90%; 
+    padding: 0.5rem 1rem 0.5rem 1rem; 
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+    text-decoration: 2px solid gray;
+}
+
+
+.MiniLibrary div:hover {
+    cursor: pointer; 
+    text-decoration: none;
+    border-bottom: 2px solid black; 
+}
+
+a:hover{
+    text-decoration:none; 
+}

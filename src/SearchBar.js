@@ -1,7 +1,11 @@
 import React from "react";
-
+import './SearchBar.css'
 function SearchBar() {
-    return <span>Here is my Search Bar</span>
-}
+    return (
+        <div className='SearchBar'>
+            <input type='search' id='SearchBar'></input>
+        </div>
+    ); 
+}; 
 
 export default SearchBar

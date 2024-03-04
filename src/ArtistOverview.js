@@ -3,7 +3,7 @@ import React from "react";
 function ArtistOverview () {
     return (
         <div>
-            <img>Image of Artist</img>
+            <div>Image of Artist</div>
             <h1>Artist Name</h1>
             <div>Top Songs</div>
             <div>Top Albums</div>
