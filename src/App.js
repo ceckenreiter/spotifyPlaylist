@@ -1,9 +1,8 @@
 import './App.css';
-import './style.css'; 
 import MiniLibrary from './MiniLibrary.js'
 import CurrentlyPlaying from './CurrentlyPlaying.js'
-import SearchBar from './SearchBar.js'
-import Browse from './Browse';
+import ChangingBody from './ChangingBody';
+
 
 
 function App() {
@@ -14,11 +13,11 @@ function App() {
         <CurrentlyPlaying />
       </div>
       <div className='right'>
-        <SearchBar />
-        <Browse />
+        <ChangingBody />
       </div>
     </div>
   );
 }; 
+
 
 export default App;

@@ -1,9 +1,10 @@
 .MiniLibrary{
     width: auto; 
-    height: auto; 
+    height: 400px; 
     padding: 1rem;
     padding-bottom: 1rem;
     margin: 1rem;
+
     
 }
 
@@ -11,26 +12,46 @@
     font-size: 2rem;
     border-left: 2px solid black;
     padding: 1rem;
+    
 }
 
-.MiniLibrary div{
-    height: 5%; 
-    border-bottom: 1px solid gray; 
-    width: 90%; 
-    padding: 0.5rem 1rem 0.5rem 1rem; 
+.MiniLibrary p{
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+
+}
+
+
+div.MiniLibrary div.List{
+    overflow: scroll; 
+    height: 200px; 
     display: flex;
-    justify-content: space-between;
-    margin: 0.5rem;
-    text-decoration: 2px solid gray;
+    flex-direction: column;
+    margin-bottom: 0rem;
+
 }
 
 
-.MiniLibrary div:hover {
-    cursor: pointer; 
+
+div.MiniLibrary div.List a div{
+    display: flex;
+    justify-content: space-between;   
+    padding: 1rem;
+    border-bottom: 2px solid grey; 
+
+}
+
+div.MiniLibrary div.List a:hover {
     text-decoration: none;
-    border-bottom: 2px solid black; 
+
 }
 
-a:hover{
-    text-decoration:none; 
+div.MiniLibrary div.List a div:hover{
+    text-decoration: none;
+    border-bottom: 2px solid black;
+
 }
+
+
+
+

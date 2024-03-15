@@ -1,5 +1,4 @@
 
-
 body {
   display: flex;
   flex-direction: column;
@@ -9,6 +8,11 @@ body {
 a:hover{
   cursor: pointer; 
   text-decoration: underline;
+}
+
+a:visited {
+  color: black; 
+  text-decoration: none;
 }
 
 div.spacer {
@@ -84,6 +88,7 @@ div.spacer {
     #startPage{
       display: flex;
       justify-content: space-around;
+      align-items: center;
       font-size: 2rem; 
       height: 500px; 
     }
@@ -109,7 +114,8 @@ div.spacer {
 
     #startPage h1{
       border-left: 2px solid black; 
-      margin: max-content;
+      margin: 2rem;
+      height: max-content;
       width: 45%; 
       display: flex; 
       justify-content: center;
