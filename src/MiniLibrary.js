@@ -1,5 +1,5 @@
 import React from "react";
-import './MiniLibrary.css';
+import './css/MiniLibrary.css';
 
 
 function MiniLibrary(props) {

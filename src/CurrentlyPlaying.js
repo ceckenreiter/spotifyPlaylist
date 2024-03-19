@@ -1,14 +1,15 @@
 import React from "react";
-import './CurrentlyPlaying.css'; 
+import './css/CurrentlyPlaying.css'; 
+import trackList from "./SpotifyAPI";
 
-function CurrentlyPlaying() {
+function CurrentlyPlaying(props, NowPlaying, setNowPlaying) {
     return (
     <div className='CurrentlyPlaying'>
         <h1>Currently Playing</h1>
         <div className="content">
             <div className='img'>Image of Cover</div>
             <div className='info'>
-                <h2>Song Title</h2>
+                <h2>{props.NowPlaying}</h2>
                 <h3>Artist</h3>
                 <button>Play Button</button>
             </div>
