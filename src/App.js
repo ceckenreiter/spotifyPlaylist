@@ -8,9 +8,14 @@ import React, {useState} from 'react';
 
 
 function App() {
-  const [NowPlaying, setNowPlaying] = useState("Blank"); 
+  const [NowPlaying, setNowPlaying] = useState(''); 
   const [display, setDisplay] = useState(<Browse />);
   const [searchInput, setSearchInput] = useState("");
+  const [Artist, setArtist] = useState(''); 
+  const [Album, setAlbum] = useState(''); 
+  
+
+
 
   return (
     <div id='App'>
@@ -18,7 +23,13 @@ function App() {
         <MiniLibrary />
         <CurrentlyPlaying 
          NowPlaying={NowPlaying} 
-         setNowPlaying={setNowPlaying} />
+         setNowPlaying={setNowPlaying}
+         Album={Album}
+         Artist={Artist}
+         setAlbum={setAlbum}
+         setArtist={setArtist}
+      
+          />
       </div>
       <div className='right'>
         <ChangingBody 
@@ -28,8 +39,13 @@ function App() {
           setNowPlaying={setNowPlaying} 
           setSearchInput={setSearchInput}
           setDisplay={setDisplay}
+          Artist={Artist}
+          setArtist={setArtist}  
+          Album = {Album}   
+          setAlbum ={ setAlbum}
         />
       </div>
+      
     </div>
   );
 }; 

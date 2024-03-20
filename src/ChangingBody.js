@@ -1,30 +1,17 @@
-import React, { useState} from "react";
+import React from "react";
 import "./css/ChangingBody.css"; 
 import trackList from "./SpotifyAPI";
 import SearchedResults from "./SearchedResults";
+import SearchButton from "./SearchButton";
 
 
-function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, NowPlaying, setNowPlaying) {
-
-    const [count, setCount] = useState(0); 
+function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) {
    
     const handleChange = (e) => {
         e.preventDefault();
         props.setSearchInput(e.target.value); 
     }; 
-
-    const handleClick = (e) => {
-        e.preventDefault()
-        setCount((prevState) => prevState + 1);
-        const result = trackList.filter((options) => options.artist === props.searchInput);
-        props.setDisplay(
-            <SearchedResults 
-                NowPlaying={props.NowPlaying} 
-                setNowPlaying={props.setNowPlaying} 
-                list={result} 
-            />
-        )
-    }; 
+    
 
     return (
         <div>
@@ -36,12 +23,23 @@ function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, 
                         value={props.searchInput}
                         onChange={handleChange}
                     />
-                    <button onClick={handleClick}>{count}</button>
+                    <SearchButton 
+                        searchInput={props.searchInput}
+                        setDisplay = {props.setDisplay}
+                        NowPlaying={props.NowPlaying}
+                        setNowPlaying={props.setNowPlaying}
+                        Album={props.Album}
+                        Artist={props.Artist}
+                        setAlbum={props.setAlbum} 
+                        setArtist={props.setArtist}>
+                        
+
+                    </SearchButton>
                 </form>
             </div>
             <div>{props.display}</div>
         </div>
-)
+    )
 };  
  
 

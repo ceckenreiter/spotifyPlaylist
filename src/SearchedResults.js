@@ -1,8 +1,12 @@
 import React from "react";
 import './ChangingBody'
 import './css/SearchedResults.css'
+import PlayButton from "./PlayButton";
 
-function SearchedResults (props, NowPlaying, setNowPlaying ) { 
+
+function SearchedResults (props, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) { 
+
+
 
     return (
             <div id='SearchedResults'>
@@ -15,8 +19,20 @@ function SearchedResults (props, NowPlaying, setNowPlaying ) {
                                 <span>{option.song}</span>
                                 <span>{option.album}</span>
                                 <span>{option.artist}</span>
+                                <PlayButton
+                                    value1={option.song}
+                                    value2={option.artist}
+                                    value3={option.album}
+                                    Album={props.Album}
+                                    setAlbum={props.setAlbum}
+                                    setArtist={props.setArtist}
+                                    Artist={props.Artist}
+                                    NowPlaying={props.NowPlaying}
+                                    setNowPlaying={props.setNowPlaying}
+                                    
+                                    
+                                 />
                                 </a>
-                                <button onClick={props.setNowPlaying(option.song)}>Play</button>
                             </div>
                     ))}
                    
