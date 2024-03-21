@@ -9,12 +9,24 @@ function SearchButton(props, setDisplay, NowPlaying, setNowPlaying, setAlbum, se
 
     const handleClick = (e) => {
         e.preventDefault();
-        const result = trackList.filter((options) => options.artist === props.searchInput);
+        const songList = trackList.filter((options) => options.song === props.searchInput);
+        
+        const artistList = trackList.filter((options) => options.artist === props.searchInput);
+        let artistIndex = artistList.findLastIndex((options)=>options.artist ===props.searchInput)
+        let checkedArtist = artistList.slice(artistIndex)
+       
+        const albumList = trackList.filter((options) => options.album === props.searchInput);
+        let albumIndex = albumList.findLastIndex((options)=>options.artist ===props.searchInput)
+        let checkedAlbum = albumList.slice(albumIndex)
+        
         props.setDisplay(
             <SearchedResults 
+                searchInput={props.searchInput}
                 NowPlaying={props.NowPlaying} 
                 setNowPlaying={props.setNowPlaying} 
-                list={result} 
+                songList={songList} 
+                artistList={checkedArtist}
+                albumList={checkedAlbum}
                 Album={props.Album}
                 Artist={props.Artist}
                 setAlbum={props.setAlbum} 

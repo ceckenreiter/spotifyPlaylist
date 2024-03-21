@@ -11,9 +11,9 @@ function CurrentlyPlaying(props, NowPlaying, setNowPlaying, Artist, Album) {
         <div className="content">
             <div className='img'>Image of Cover</div>
             <div className='info'>
-                <h2>Song: {props.NowPlaying}</h2>
-                <h3>Artist: {props.Artist}</h3>
-                <h3>Album: {props.Album}</h3>
+                <h2>{props.NowPlaying}</h2>
+                <h3>{props.Artist}</h3>
+                <h3>{props.Album}</h3>
                
             </div>
         </div>

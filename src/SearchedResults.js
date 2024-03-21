@@ -6,14 +6,30 @@ import PlayButton from "./PlayButton";
 
 function SearchedResults (props, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) { 
 
+  
 
 
     return (
-            <div id='SearchedResults'>
-                <p>Results for: {props.value}</p>
-                <div className='List'>
-                                
-                    {props.list.map((option, index) => (
+        <div id='SearchedResults'>
+            <p>Results for: {props.searchInput}</p>
+            <div id='ArtistResults'>
+                <p>Artists</p>
+                <div className='List'>         
+                    {props.artistList.map((option, index) => (
+                            <div key={index}>
+                                <a>
+                                <span>{option.artist}</span>
+                               
+                                </a>
+                            </div>
+                    ))}  
+                </div>
+            </div>
+
+            <div id='SongResults'>
+                <div className='List'> 
+                <p>Songs</p>
+                    {props.songList.map((option, index) => (
                             <div key={index}>
                                 <a>
                                 <span>{option.song}</span>
@@ -29,16 +45,29 @@ function SearchedResults (props, NowPlaying, setNowPlaying, setAlbum, setArtist,
                                     Artist={props.Artist}
                                     NowPlaying={props.NowPlaying}
                                     setNowPlaying={props.setNowPlaying}
-                                    
-                                    
-                                 />
+                                />
                                 </a>
                             </div>
-                    ))}
-                   
+                    ))}   
                 </div>
             </div>
+       
+            <div id='AlbumResults'>
+                <div className='List'>
+                    <p>Albums</p>
+                    {props.albumList.map((option, index) => (
+                        <div key={index}>
+                            <a>
+                                <span>{option.album}</span>
+                                <span>{option.artist}</span>
+                            </a>
+                        </div>
+                    ))}
+           
+                </div>
+            </div>
+    </div>
     )
-}; 
+    }; 
 
 export default SearchedResults;  
