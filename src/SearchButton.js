@@ -5,7 +5,7 @@ import SearchedResults from "./SearchedResults";
 
 
 
-function SearchButton(props, setDisplay, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) {
+function SearchButton(props, display, setDisplay, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist, thisPlaylist, setThisPlaylist) {
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -21,6 +21,8 @@ function SearchButton(props, setDisplay, NowPlaying, setNowPlaying, setAlbum, se
         
         props.setDisplay(
             <SearchedResults 
+                setDisplay={props.setDisplay}
+                display = {props.display}
                 searchInput={props.searchInput}
                 NowPlaying={props.NowPlaying} 
                 setNowPlaying={props.setNowPlaying} 
@@ -31,6 +33,8 @@ function SearchButton(props, setDisplay, NowPlaying, setNowPlaying, setAlbum, se
                 Artist={props.Artist}
                 setAlbum={props.setAlbum} 
                 setArtist={props.setArtist}
+                thisPlaylist = {props.thisPlaylist}
+                setThisPlaylist={props.setThisPlaylist}
             /> 
             )
     }

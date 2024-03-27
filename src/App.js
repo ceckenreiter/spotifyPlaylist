@@ -1,5 +1,5 @@
 import './css/App.css';
-import MiniLibrary from './MiniLibrary.js'
+import Tracklist from './Tracklist.js'
 import CurrentlyPlaying from './CurrentlyPlaying.js'
 import ChangingBody from './ChangingBody';
 import Browse from './Browse';
@@ -8,11 +8,16 @@ import React, {useState} from 'react';
 
 
 function App() {
+
   const [NowPlaying, setNowPlaying] = useState(''); 
   const [display, setDisplay] = useState(<Browse />);
   const [searchInput, setSearchInput] = useState("");
   const [Artist, setArtist] = useState(''); 
   const [Album, setAlbum] = useState(''); 
+
+  const [thisPlaylist, setThisPlaylist] = useState([]); 
+
+  const [title, setTitle] = useState(''); 
   
 
 
@@ -20,16 +25,33 @@ function App() {
   return (
     <div id='App'>
       <div className='left'>
-        <MiniLibrary />
-        <CurrentlyPlaying 
+      <CurrentlyPlaying 
          NowPlaying={NowPlaying} 
          setNowPlaying={setNowPlaying}
          Album={Album}
          Artist={Artist}
          setAlbum={setAlbum}
          setArtist={setArtist}
+         thisPlaylist={thisPlaylist}
+         setThisPlaylist={setThisPlaylist}
       
           />
+        <Tracklist 
+        searchInput={searchInput}
+        display={display}
+        NowPlaying={NowPlaying} 
+        setNowPlaying={setNowPlaying} 
+        setSearchInput={setSearchInput}
+        setDisplay={setDisplay}
+        Artist={Artist}
+        setArtist={setArtist}  
+        Album = {Album}   
+        setAlbum ={ setAlbum}
+        title={title}
+        setTitle={setTitle}
+        thisPlaylist={thisPlaylist}
+        setThisPlaylist={setThisPlaylist}
+      />        
       </div>
       <div className='right'>
         <ChangingBody 
@@ -43,6 +65,8 @@ function App() {
           setArtist={setArtist}  
           Album = {Album}   
           setAlbum ={ setAlbum}
+          thisPlaylist={thisPlaylist}
+          setThisPlaylist={setThisPlaylist}
         />
       </div>
       

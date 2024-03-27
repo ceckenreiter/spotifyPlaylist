@@ -1,4 +1,4 @@
-.MiniLibrary{
+.Tracklist{
     width: auto; 
     height: 400px; 
     padding: 1rem;
@@ -8,22 +8,22 @@
     
 }
 
-.MiniLibrary h1{
+.Tracklist h1{
     font-size: 2rem;
     border-left: 2px solid black;
     padding: 1rem;
     
 }
 
-.MiniLibrary p{
+.Tracklist p{
     margin-top: 2rem;
     margin-bottom: 0rem;
 
 }
 
 
-div.MiniLibrary div.List{
-    overflow: scroll; 
+div.Tracklist div.List{
+   
     height: 200px; 
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ div.MiniLibrary div.List{
 
 
 
-div.MiniLibrary div.List a div{
+div.Tracklist div.List a div{
     display: flex;
     justify-content: space-between;   
     padding: 1rem;
@@ -41,12 +41,12 @@ div.MiniLibrary div.List a div{
 
 }
 
-div.MiniLibrary div.List a:hover {
+div.Tracklist div.List a:hover {
     text-decoration: none;
 
 }
 
-div.MiniLibrary div.List a div:hover{
+div.Tracklist div.List a div:hover{
     text-decoration: none;
     border-bottom: 2px solid black;
 

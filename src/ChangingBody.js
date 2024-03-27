@@ -5,7 +5,7 @@ import SearchedResults from "./SearchedResults";
 import SearchButton from "./SearchButton";
 
 
-function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) {
+function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist, thisPlaylist, setThisPlaylist) {
    
     const handleChange = (e) => {
         e.preventDefault();
@@ -25,16 +25,17 @@ function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, 
                     />
                     <SearchButton 
                         searchInput={props.searchInput}
+                        display={props.display}
                         setDisplay = {props.setDisplay}
                         NowPlaying={props.NowPlaying}
                         setNowPlaying={props.setNowPlaying}
                         Album={props.Album}
                         Artist={props.Artist}
                         setAlbum={props.setAlbum} 
-                        setArtist={props.setArtist}>
-                        
-
-                    </SearchButton>
+                        setArtist={props.setArtist}
+                        thisPlaylist={props.thisPlaylist}
+                        setThisPlaylist={props.setThisPlaylist}
+                        />
                 </form>
             </div>
             <div>{props.display}</div>

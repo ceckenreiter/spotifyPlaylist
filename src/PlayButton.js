@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import trackList from "./SpotifyAPI";
 
 
-function PlayButton (props, NowPlaying, setNowPlaying, setAlbum, setArtist, Album, Artist) {
+function PlayButton (props, setNowPlaying, setAlbum, setArtist, value1, value2, value3) {
 
     const handleClick = (e) => {
         e.preventDefault(); 
