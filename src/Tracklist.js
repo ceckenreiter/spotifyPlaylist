@@ -1,9 +1,10 @@
 import React from "react";
 import './css/Tracklist.css';
 import CreatePlaylistButton from "./CreatePlaylistButton";
+import RemoveFromPlaylistButton from "./RemoveFromPlaylistButton";
 
 
-function Tracklist(props, display, setDisplay, title, setTitle, thisPlaylist, setThisPlaylist) {
+function Tracklist(props, thisPlaylist, setThisPlaylist) {
     
 
     return (
@@ -16,6 +17,11 @@ function Tracklist(props, display, setDisplay, title, setTitle, thisPlaylist, se
                             <div key={index}>
                                 <span >{option.song}</span>
                                 <span >{option.artist}</span>
+                                <RemoveFromPlaylistButton 
+                                thisSong={option.song}
+                                thisPlaylist={props.thisPlaylist}
+                                setThisPlaylist={props.setThisPlaylist}
+                                />
                             </div>
                         </a>
                     ))}
