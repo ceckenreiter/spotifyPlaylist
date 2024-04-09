@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from "react";
 import SearchButton from "./SearchButton";
 
-function LinkToSpotifyButton (props) {
+function LinkToSpotifyButton (props, ID) {
 
-const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
+const CLIENT_ID = props.ID
+
 const REDIRECT_URI = 'http://localhost:3000';
 const AUTHOR_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const RESPONSE_TYPE ='token'
@@ -18,10 +19,9 @@ const [token, setToken] = useState('')
         if (!token && hash) { //checks if we get a access token//
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             window.location.hash=""
-            window.localStorage.setItem('token', token)
-            setToken(token) //if so we extract the token part and set our tokwn//
+            window.localStorage.setItem('token', token)  
         }
-
+        setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
     }, [])
 
 
@@ -38,7 +38,7 @@ const [token, setToken] = useState('')
             <a href={`${AUTHOR_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
             <button>Link To Spotify</button>
             </a>
-            : <button onClick={logout}>Log Out of Spotify</button>
+            :<button onClick={logout}>Log Out of Spotify</button>
             }
         </div>
     )

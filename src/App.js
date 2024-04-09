@@ -18,16 +18,20 @@ function App() {
   const [Album, setAlbum] = useState(''); 
   const [thisPlaylist, setThisPlaylist] = useState([]); 
   const [title, setTitle] = useState(''); 
-  
+
+  const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
+  const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"
 
 
 
   return (
     <div id='App'>
-      <LoginPage 
+      <LoginPage ID={CLIENT_ID}
         
       />
     <ProfileInformation 
+     ID={CLIENT_ID}
+     SECRET={CLIENT_SECRET}
         />
       <div className='SpecificContent'>
         <div className='left'>

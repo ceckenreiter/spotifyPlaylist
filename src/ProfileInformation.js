@@ -1,42 +1,32 @@
 import React, {useState, useEffect} from "react";
 
-function ProfileInformation (props, token, setToken) {
+function ProfileInformation (props, ID, SECRET) {
 
     const {data, setData} = useState([])
-    const {userID, setUserID} = useState('foodredflower')
+    let token = window.localStorage.getItem('token')
 
     useEffect(() => {
-        doFetching("https://api.spotify.com/v1/users/foodredflower"); 
-    }, []); 
 
-    const doFetching = async(url) => {   
-        
-        fetch(url, {
-            method: 'GET', 
+        const authParams = {
+            method: 'POST', 
             headers: {
-                Authorization: 'Bearer' + props.token
-            } 
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/x-www-form-urelencoded"
+            },
+            body: 'grant_type=client_credentials@client_id=' + props.ID + '&client_secret=' + props.SECRET,
 
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json() 
-            }
-            throw new Error (`error`); 
-         })
-         .then(response => {
-            console.log(response)
-            
-         })
-         .catch(error => console.error(error))
-    }
+        }
+        
+        fetch("https://api.spotify.com/v1/users/foodredflower", authParams)
+        .then(response => console.log(response) )
+        .catch(error => console.error(error))
+         }, [])
 
-   
 
     return (
         <div>
-            <h2>Here is the info: {props.token}</h2>  
-            <h2>Here is the userID:{userID}</h2>  
+            <h2>Here is the info:</h2>  
+            <h2>Here is the userID:</h2>  
                
         </div>
     )
