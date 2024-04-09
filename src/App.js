@@ -17,7 +17,6 @@ function App() {
   const [Artist, setArtist] = useState(''); 
   const [Album, setAlbum] = useState(''); 
   const [thisPlaylist, setThisPlaylist] = useState([]); 
-  const [token, setToken] = useState("")
   const [title, setTitle] = useState(''); 
   
 
@@ -26,10 +25,10 @@ function App() {
   return (
     <div id='App'>
       <LoginPage 
-        token={token}
-        setToken={setToken}
+        
       />
-    <ProfileInformation />
+    <ProfileInformation 
+        />
       <div className='SpecificContent'>
         <div className='left'>
         <CurrentlyPlaying 
