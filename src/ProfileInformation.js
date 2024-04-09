@@ -2,31 +2,33 @@ import React, {useState, useEffect} from "react";
 
 function ProfileInformation (props, ID, SECRET) {
 
-    const {data, setData} = useState([])
+    const [user, setUser] = useState('')
     let token = window.localStorage.getItem('token')
 
     useEffect(() => {
 
-        const authParams = {
-            method: 'POST', 
+        var authParams = {
+            method: 'GET', 
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/x-www-form-urelencoded"
             },
-            body: 'grant_type=client_credentials@client_id=' + props.ID + '&client_secret=' + props.SECRET,
-
         }
         
         fetch("https://api.spotify.com/v1/users/foodredflower", authParams)
-        .then(response => console.log(response) )
-        .catch(error => console.error(error))
+        .then(response => response.json())
+        .then(json => 
+            setUser(json.id)
+        )
+        
+        .catch(error => console.log(error))
          }, [])
 
 
     return (
         <div>
-            <h2>Here is the info:</h2>  
-            <h2>Here is the userID:</h2>  
+            <h2>Here is the info: </h2>  
+            <h2>Here is the userID:{user} </h2>  
                
         </div>
     )
