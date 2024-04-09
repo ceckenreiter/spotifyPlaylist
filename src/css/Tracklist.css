@@ -1,22 +1,21 @@
 .Tracklist{
-    width: auto; 
+    width: 75%; 
     height: 400px; 
     padding: 1rem;
     padding-bottom: 1rem;
     margin: 1rem;
 
-    
 }
 
-.Tracklist h1{
-    font-size: 2rem;
+div.Tracklist h1{
     border-left: 2px solid black;
     padding: 1rem;
+    font-size: 2rem ;
     
 }
 
-.Tracklist p{
-    margin-top: 2rem;
+div.Tracklist p{
+    margin-top: 1rem;
     margin-bottom: 0rem;
 
 }

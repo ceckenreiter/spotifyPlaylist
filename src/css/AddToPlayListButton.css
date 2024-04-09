@@ -1,0 +1,42 @@
+ /*Start page */
+
+    #startPage{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 2rem; 
+      height: 500px; 
+    }
+
+    #startPage div.button{
+      margin: 1rem;
+      width: 45%; 
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    #startPage div.button button{
+      border: 5px solid black; 
+      border-radius: 10%; 
+      height: min-content;  
+      width: 55%; 
+      font-size: 4rem;
+      padding: 1rem;
+    }
+
+    #startPage h1{
+      border-left: 2px solid black; 
+      margin: 2rem;
+      height: max-content;
+      width: 45%; 
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      font-size: 3rem;
+    }
+
+    
