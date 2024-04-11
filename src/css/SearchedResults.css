@@ -3,41 +3,40 @@
     display: flex;
     flex-direction: column;
     margin: 1rem; 
-    height: 30rem; 
     background-color: aliceblue;
 }
 
-#SearchedResults div.List{
-    display: flex; 
-    flex-direction: column; 
-    border: 2px solid black; 
-    margin: 1rem; 
-    padding: 1rem; 
-    height: min-content; 
-    width: 80%; 
+#SearchedResults div.albums {
+    overflow: scroll; 
+    height: 20rem; 
 }
 
-#SearchedResults div.List div {
+    #SearchedResults div.albums div.options{
+    }
+
+
+        #SearchedResults div.albums div.options div{
+            width: 200px; 
+            display: inline-block; 
+        }
+            #SearchedResults div.albums div.options div a{
+            }
+
+#SearchedResults div.tracks {
     border: 2px solid green; 
+    overflow: scroll; 
+    height: 20rem; 
 }
 
-#SearchedResults div.List div {
-    border: 2px solid pink; 
-    height: 100px; 
-    display: flex;
-    margin: 1rem;
+#SearchedResults div.track-options {
+    border: 2px solid blue; 
+    width: 10rem;
+    height: 7rem;
+    overflow: scroll; 
+
+    display: inline-block;
 }
 
-#SearchedResults div.List a{
-    border: 2px solid red; 
-    margin:1rem;
-    padding: 1rem;
-    width: 100%; 
-    
+#SearchedResults div.track-options p {
+    border: 2px solid pink;
 }
-
-#SearchedResults div.List a span{
-    border: 2px solid blue;   
-    margin: 1rem;
-}
-

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import './css/CurrentlyPlaying.css'; 
-import trackList from "./SpotifyAPI";
+import '../css/CurrentlyPlaying.css'; 
 
 
 function CurrentlyPlaying(props, NowPlaying, setNowPlaying, Artist, Album) {

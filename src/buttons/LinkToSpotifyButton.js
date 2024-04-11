@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import SearchButton from "./SearchButton";
 
-function LinkToSpotifyButton (props, ID) {
+function LinkToSpotifyButton (props, profileInfo, setProfileInfo, ID, isLogged, setIsLogged) {
 
 const CLIENT_ID = props.ID
 
@@ -22,13 +22,15 @@ const [token, setToken] = useState('')
             window.localStorage.setItem('token', token)  
         }
         setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
+        props.setIsLogged('true')
     }, [])
-
 
 
     const logout = () => {
         setToken("")
+        props.setProfileInfo('')
         window.localStorage.removeItem("token")
+        props.setIsLogged('false')
     }
 
 

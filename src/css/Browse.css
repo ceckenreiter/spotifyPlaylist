@@ -14,7 +14,7 @@
     text-shadow: black 2px 2px 2px;
 }
 
-div.options a div{
+#browse div.options a div{
     display: inline-block;
     width: auto; 
     height: auto;    
@@ -23,13 +23,13 @@ div.options a div{
 }
 
 
-div.options{
+#browse div.options{
     height: 100%; 
     overflow: scroll;
     display: inline-block;
 }
 
-div.options div{
+#browse div.options div{
     border: 2px solid black; 
     display: inline-block;
     width: 200px; 
@@ -39,7 +39,7 @@ div.options div{
 
 }
 
-div.options p{
+#browse div.options p{
     height: auto; 
     width: auto; 
     display: flex;
@@ -47,7 +47,7 @@ div.options p{
     justify-content: center;
 }
 
-div.options a{
+#browse div.options a{
     font-size: 2rem;
     font-weight: 900;
 }

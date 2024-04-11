@@ -20,24 +20,7 @@ div.spacer {
   margin: 1rem;
   }
 
-/*Nav CSS*/ 
 
-  nav {
-    display: flex;
-    width: 95%; 
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0rem 1rem;
-    position: fixed;
-  }
-    nav div{
-      display: flex;
-      justify-content: center;
-    }
-
-    nav p {
-      margin-left: 2rem;
-    }
 
     /* Main CSS*/
 
