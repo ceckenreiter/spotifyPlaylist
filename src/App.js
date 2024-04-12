@@ -14,7 +14,7 @@ import NavigationBar from './Components/NavigationBar';
 function App() {
 
   const [searchInput, setSearchInput] = useState("");
-  const [display, setDisplay] = useState(<Browse />);
+  const [display, setDisplay] = useState('');
   const [profileInfo, setProfileInfo] = useState([])
   const [searchResults, setSearchResults] = useState(''); 
   const [albumList, setAlbumList] = useState([])
@@ -102,6 +102,7 @@ function App() {
             thisPlaylist={thisPlaylist}
             setThisPlaylist={setThisPlaylist}
           />
+          <Browse setDisplay={setDisplay} />
         </div>
       </div>
     </div>

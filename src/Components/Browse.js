@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from "react";
 import '../css/Browse.css'
 import ViewButton from '../buttons/ViewButton' 
-import PlaylistView from './PlaylistView'
 
 function Browse (props, display, setDisplay) {
 
-    let token = (window.localStorage.getItem("token"))
 
     const [state, setState] = useState([])
 
-    const handleClick = (e) => {
-        e.target.preventDefault()
-    }
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -26,9 +21,7 @@ function Browse (props, display, setDisplay) {
         fetch("https://api.spotify.com/v1/browse/categories", authParam)
         .then(response => response.json())
         .then(result => { 
-          setState(result.categories.items)
-          console.log(state)
-            
+            setState(result.categories.items)
         })
         .catch(error => console.log(error))
         }, [])
@@ -43,7 +36,8 @@ function Browse (props, display, setDisplay) {
                             <div key={index}>
                                <p>{item.name}</p>
                                <ViewButton 
-                                    value={item.href} 
+                                    id={item.id} 
+                                    href={item.href}
                                     name={item.name}
                                     number={2}
                                     display={props.display}

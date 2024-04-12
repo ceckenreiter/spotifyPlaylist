@@ -6,10 +6,12 @@ function ArtistAlbumView (props, value) {
     const [image, setImage] = useState('')
     const [artists, setArtists] = useState([])
     const [trackList, setTrackList] = useState([])
+
+    const albumID = props.value; 
+
  
     useEffect(() => {
         let token = window.localStorage.getItem('token')
-        let albumID = props.value; 
         var authParam = {
             method: 'GET', 
             headers: {
@@ -23,17 +25,17 @@ function ArtistAlbumView (props, value) {
           setAlbum(result)
           setImage(result.images[0].url)
           setArtists(result.artists)
-          setTrackList(result.tracks.items)
-          console.log(trackList)
-          
+          setTrackList(result.tracks.items)         
         })
         .catch(error => console.log(error))
-        }, [])
+        }, [albumID])
+
+
     return (
         <div>
             <h1>Artist Album Overview</h1>
             <p>{album.name}</p>
-            <img src={image}></img>
+            <img alt='alt text' src={image}></img>
             <p>{album.release_date}</p>
             <div className="artists">
                 {artists.map((item, index) => (

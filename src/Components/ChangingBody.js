@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import "../css/ChangingBody.css"; 
 import SearchButton from "../buttons/SearchButton";
-
+import Browse from "./Browse";
 
 function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList,
     
     NowPlaying, setNowPlaying, thisPlaylist, setThisPlaylist) {
+
    
     const handleChange = (e) => {
         e.preventDefault();

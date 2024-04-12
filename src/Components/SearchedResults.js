@@ -40,7 +40,7 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
                                 <a href={item.uri}>
                                     <img src={item.images[0].url} height='150px' width='150px'></img>  
                                 </a>
-                                <ViewButton display={props.display} setDisplay={props.setDisplay} number={1} value={item.id}/>
+                                <ViewButton display={props.display} setDisplay={props.setDisplay} number={1} id={item.id}/>
                             </div>
                         ))}  
                 </div>
