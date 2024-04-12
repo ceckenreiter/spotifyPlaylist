@@ -1,10 +1,10 @@
-import { useState } from "react";
 import React from "react";
 
-function AddToPlaylistButton (props, thisPlaylist, setThisPlaylist, value1, value2, value3) {
+function AddToPlaylistButton (props, creatingPlaylist, setCreatingPlaylist, song, artist) {
     
     const handleClick = (e) => {
-        props.setThisPlaylist([...props.thisPlaylist, {song: props.value1, artist: props.value2}])
+
+        props.setCreatingPlaylist([...props.creatingPlaylist, {song: props.song}])
     }
 
     return (

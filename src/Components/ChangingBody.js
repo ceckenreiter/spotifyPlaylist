@@ -1,11 +1,10 @@
 import React from "react";
 import "../css/ChangingBody.css"; 
 import SearchButton from "../buttons/SearchButton";
-import Browse from "./Browse";
 
-function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList,
+function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist,
     
-    NowPlaying, setNowPlaying, thisPlaylist, setThisPlaylist) {
+    NowPlaying, setNowPlaying) {
 
    
     const handleChange = (e) => {
@@ -33,6 +32,8 @@ function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, 
                         albumList={props.albumList}
                         trackList={props.trackList}
                         setTrackList={props.setTrackList}
+                        setCreatingPlaylist={props.setCreatingPlaylist}
+                        creatingPlaylist={props.creatingPlaylist}
                     />
                     
                 </form>

@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './ChangingBody'
 import '../css/SearchedResults.css'
-import PlayButton from "../buttons/PlayButton";
 import ViewButton from "../buttons/ViewButton";
+import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
 
-function SearchedResults (props, display, setDisplay, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList) {
-
+function SearchedResults (props, display, setDisplay, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist) {
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
+        
 
         var authParam = {
             method: 'GET', 
@@ -27,7 +27,7 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
             props.setTrackList(result.tracks.items)
         })
         .catch(error => console.log(error))
-    }, [props.searchInput])
+    },)
    
     return (
         <div id='SearchedResults'>
@@ -40,7 +40,7 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
                                 <a href={item.uri}>
                                     <img src={item.images[0].url} height='150px' width='150px'></img>  
                                 </a>
-                                <ViewButton display={props.display} setDisplay={props.setDisplay} number={1} id={item.id}/>
+                                <ViewButton display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist}/>
                             </div>
                         ))}  
                 </div>
@@ -56,7 +56,11 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
                                     <p>{item.album.name}</p>
                                     <p>{item.artists[0].name}</p>
                                 </a>
-                                <PlayButton />
+                                <AddToPlaylistButton 
+                                    song={item.name}
+                                    artist={item.artists[0].name}
+                                    creatingPlaylist={props.creatingPlaylist}
+                                    setCreatingPlaylist={props.setCreatingPlaylist}/>
                             </div>
                         ))}  
                 </div>

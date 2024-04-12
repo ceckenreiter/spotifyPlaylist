@@ -26,7 +26,7 @@ function App() {
   const [NowPlaying, setNowPlaying] = useState(''); 
   
   
-  const [thisPlaylist, setThisPlaylist] = useState([]); 
+  const [creatingPlaylist, setCreatingPlaylist] = useState([]); 
   
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
@@ -57,6 +57,9 @@ function App() {
      profileInfo={profileInfo}
      setProfileInfo={setProfileInfo}
         />
+
+    <Browse setDisplay={setDisplay} />
+
       <div className='SpecificContent'>
         <div className='left'>
         <CurrentlyPlaying 
@@ -79,9 +82,11 @@ function App() {
           setDisplay={setDisplay}
           searchResults={searchResults}
           setSearchResults={setSearchResults}
+          creatingPlaylist={creatingPlaylist}
+          setCreatingPlaylist={setCreatingPlaylist}
           
-          thisPlaylist={thisPlaylist}
-          setThisPlaylist={setThisPlaylist}
+
+         
         />        
         </div>
         <div className='right'>
@@ -98,11 +103,10 @@ function App() {
             albumList={albumList}
             trackList = {trackList}
             setTrackList = {setTrackList}
-           
-            thisPlaylist={thisPlaylist}
-            setThisPlaylist={setThisPlaylist}
+            creatingPlaylist={creatingPlaylist}
+            setCreatingPlaylist={setCreatingPlaylist}
           />
-          <Browse setDisplay={setDisplay} />
+          
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
-function ArtistAlbumView (props, value) {
+function ArtistAlbumView (props, value, creatingPlaylist, setCreatingPlaylist) {
 
     const [album, setAlbum] = useState('')
     const [image, setImage] = useState('')
@@ -48,6 +49,11 @@ function ArtistAlbumView (props, value) {
                 {trackList.map((item, index) => (
                             <div key={index}>
                                 <p>{item.track_number}: {item.name}</p>
+                                <AddToPlaylistButton 
+                                song={item.name}
+                                artist={item.artists[0].name}
+                                creatingPlaylist={props.creatingPlaylist}
+                                setCreatingPlaylist={props.setCreatingPlaylist}/>
                             </div>
                         ))}  
             </div>
