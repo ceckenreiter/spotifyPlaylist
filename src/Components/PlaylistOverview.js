@@ -36,8 +36,13 @@ const [name, setName] = useState('')
                     <div key={index}>
                         <p>{item.track.name}</p>
                         <p>{item.track.artists[0].name}</p>
-                        <AddToPlaylistButton />
-                    </div>
+                        <AddToPlaylistButton 
+                            song={item.track.name}
+                            artist={item.track.artists[0].name}
+                            creatingPlaylist={props.creatingPlaylist}
+                            setCreatingPlaylist={props.setCreatingPlaylist}/>
+                     </div>
+                  
                 ))}
                    
             </div> 
