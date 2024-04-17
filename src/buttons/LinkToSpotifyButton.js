@@ -21,16 +21,17 @@ const [token, setToken] = useState('')
             window.location.hash=""
             window.localStorage.setItem('token', token)  
         }
+        props.setIsLogged(true)
         setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
-        props.setIsLogged('true')
     }, [])
+
 
 
     const logout = () => {
         setToken("")
-        props.setProfileInfo('')
+        props.setProfileInfo("")
         window.localStorage.removeItem("token")
-        props.setIsLogged('false')
+        props.setIsLogged(false)
     }
 
 

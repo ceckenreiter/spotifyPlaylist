@@ -3,26 +3,26 @@ import '../css/NavigationBar.css'
 
 
 function NavigationBar (props, isLogged, setIsLogged, profileInfo, setProfileInfo) {
+    
+    console.log(props.isLogged)
 
-    if (props.isLogged) {
+
+
+
+
         return(
             <nav>
                 <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>
-                <div>
-                    <p><a target='_blank' href="https://spotify.com">{props.profileInfo.id}</a></p> 
-                </div>
+               {props.isLogged ? 
+                    <div>
+                        <p><a target='_blank' href="https://spotify.com">{props.profileInfo.id}</a></p> 
+                    </div>
+                :
+                <a target="#LoginPage" >Login</a>
+               }
             </nav>
         )
-    } else {
+   
 
-    return (
-        <nav>
-        <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>
-        <div>
-            <p><a  href="#startPage">Link Spotify</a></p> 
-        </div>
-    </nav>
-
-    )
-}}
+}
 export default NavigationBar

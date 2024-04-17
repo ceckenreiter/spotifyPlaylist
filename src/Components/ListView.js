@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
+import ViewButton from "../buttons/ViewButton"
 
-function PlaylistView (props, id, href, number) {
+function ListView (props, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong) {
     
     const [thisPlaylist, setThisPlaylist]= useState([])
 
@@ -25,6 +26,8 @@ function PlaylistView (props, id, href, number) {
             setName(result.message)
             console.log(result.playlists)
             setThisPlaylist(result.playlists.items)
+            console.log(result.playlists.items[0].href)
+            
 
         })
         .catch(error => console.log(error))
@@ -35,11 +38,14 @@ function PlaylistView (props, id, href, number) {
 
     return (
         <div>
-            <p>Browing for Playlists that are: {name} </p>
+            <p>Browsing for Playlists that are: {name} </p>
             <div className="options">
                     {thisPlaylist.map((item, index) => (
                         <div key={index}>
                             <p>{item.description}</p>
+                            <p>{item.tracks.total}</p>
+                            <ViewButton setDisplay={props.setDisplay} display={props.display} href={item.href} number={3} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} clickedSong={props.clickedSong}
+                                    setClickedSong={props.setClickedSong}/>
                         </div>
                     ))}  
             </div>
@@ -48,4 +54,4 @@ function PlaylistView (props, id, href, number) {
     )
 }
 
-export default PlaylistView
+export default ListView

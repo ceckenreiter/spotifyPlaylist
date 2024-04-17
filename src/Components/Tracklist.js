@@ -1,6 +1,7 @@
 import React from "react";
 import '../css/Tracklist.css';
 import CreatePlaylistButton from "../buttons/CreatePlaylistButton";
+import Playlists from "./Playlists";
 
 
 function Tracklist(props, creatingPlaylist, setCreatingPlaylist) {
@@ -17,14 +18,14 @@ function Tracklist(props, creatingPlaylist, setCreatingPlaylist) {
                                     <p>{item.name}</p>
                                 </a>
 
-                            </div>
+                        </div>
                         ))}  
                 </div>
 
                 
-                </div>
-                <CreatePlaylistButton />
             </div>
+            <CreatePlaylistButton />
+        </div>
         
     );
 };

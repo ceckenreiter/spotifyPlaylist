@@ -4,7 +4,11 @@ function AddToPlaylistButton (props, creatingPlaylist, setCreatingPlaylist, song
     
     const handleClick = (e) => {
 
+        
+
         props.setCreatingPlaylist([...props.creatingPlaylist, {song: props.song}])
+
+
     }
 
     return (
