@@ -1,21 +1,22 @@
 import React, {useState, useEffect} from "react";
 
-function ProfileInformation (props, ID, SECRET, profileInfo, setProfileInfo) {
+function ProfileInformation (props, ID, SECRET, profileInfo, setProfileInfo, username, setUsername) {
     
-    let token = window.localStorage.getItem('token')
-    const [username, setUsername] = useState('')
-
     useEffect(() => {
+        const token = window.localStorage.getItem('token')
+
         var authParams = {
             method: 'GET', 
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/x-www-form-urelencoded"
             },
+            scopes: 'user-read-private user-read-email'
         }
-        fetch(`https://api.spotify.com/v1/users/foodredflower`, authParams)
+
+        fetch('https://api.spotify.com/v1/me', authParams)
         .then(response => response.json())
-        .then(json => props.setProfileInfo(json))
+        .then(json => console.log(json))
         .catch(error => console.log(error))
     }, [])
 

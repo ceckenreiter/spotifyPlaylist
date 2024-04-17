@@ -25,8 +25,6 @@ const [token, setToken] = useState('')
         setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
     }, [])
 
-
-
     const logout = () => {
         setToken("")
         props.setProfileInfo("")

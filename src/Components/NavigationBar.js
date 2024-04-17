@@ -4,8 +4,6 @@ import '../css/NavigationBar.css'
 
 function NavigationBar (props, isLogged, setIsLogged, profileInfo, setProfileInfo) {
     
-    console.log(props.isLogged)
-
         return(
             <nav>
                 <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>

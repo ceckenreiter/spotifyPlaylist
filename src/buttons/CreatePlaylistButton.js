@@ -1,19 +1,16 @@
 import React from "react";
+import CreatePlaylist from "../Components/CreatePlaylist";
 
-function CreatePlaylistButton (props, setDisplay, title, setTitle, allPlaylists, setAllPlaylists) {
+function CreatePlaylistButton (props, setDisplay) {
 
     const handleClick = (e) => {
         e.preventDefault()
         
-       
-
-
-
-
+       props.setDisplay(<CreatePlaylist />)
     }
 
     return (
-       <button onClick={handleClick}>Finish Playlist</button>
+       <button onClick={handleClick}>New Playlist</button>
     )
 
 }

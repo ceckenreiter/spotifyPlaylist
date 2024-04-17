@@ -22,6 +22,7 @@ function App() {
   const [creatingPlaylist, setCreatingPlaylist] = useState([]); // for creating list we want to export
   const [isLogged, setIsLogged] = useState(false) // for testing if logged on
   const [clickedSong, setClickedSong] = useState('') // adding songs to playlist
+  const [username, setUsername] = useState('')
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
   const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"
@@ -35,21 +36,30 @@ function App() {
       setIsLogged={setIsLogged}
       profileInfo={profileInfo}
       setProfileInfo={setProfileInfo}
+      username={username}
+      setUsername={setUsername}
       />
 
       <GreetingsPage />
-      <LoginPage ID={CLIENT_ID}
+
+      <LoginPage 
+      ID={CLIENT_ID}
       profileInfo={profileInfo}
       setProfileInfo={setProfileInfo}
       isLogged={isLogged}
       setIsLogged={setIsLogged}
+      username={username}
+      setUsername={setUsername}
         
       />
+      
     <ProfileInformation 
      ID={CLIENT_ID}
      SECRET={CLIENT_SECRET}
      profileInfo={profileInfo}
      setProfileInfo={setProfileInfo}
+     username={username}
+     setUsername={setUsername}
         />
 
 
@@ -66,6 +76,10 @@ function App() {
             setSearchResults={setSearchResults}
             clickedSong={clickedSong}
             setClickedSong={setClickedSong}
+            setProfileInfo={setProfileInfo}
+            profileInfo={profileInfo}
+            username={username}
+            setUsername={setUsername}
             />
          
        
@@ -80,6 +94,8 @@ function App() {
           setCreatingPlaylist={setCreatingPlaylist}
           clickedSong={clickedSong}
           setClickedSong={setClickedSong}
+          username={username}
+          setUsername={setUsername}
            
 
          
