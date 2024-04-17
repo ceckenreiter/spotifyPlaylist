@@ -6,10 +6,6 @@ function NavigationBar (props, isLogged, setIsLogged, profileInfo, setProfileInf
     
     console.log(props.isLogged)
 
-
-
-
-
         return(
             <nav>
                 <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>

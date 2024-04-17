@@ -39,7 +39,8 @@ function Playlists(props, username, setUsername ) {
                     <div key={index}>
                         <p>{item.name}</p>
                         <ViewButton 
-                            
+                            thisList={thisList}
+                            setThisList={setThisList}
                             setDisplay={props.setDisplay} 
                             display={props.display} 
                             href={item.href} 
