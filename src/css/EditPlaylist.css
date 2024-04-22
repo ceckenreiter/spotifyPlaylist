@@ -1,0 +1,9 @@
+input {
+    font-size: 2rem;
+    color: gray; 
+}
+
+input:focus {
+    bordeR: 2px solid green; 
+    color: black;
+}

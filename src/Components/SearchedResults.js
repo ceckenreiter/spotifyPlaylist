@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
 
-function SearchedResults (props, display, setDisplay, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist) {
+function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo) {
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -40,7 +40,7 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
                                 <a href={item.uri}>
                                     <img src={item.images[0].url} height='150px' width='150px'></img>  
                                 </a>
-                                <ViewButton display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist}/>
+                                <ViewButton  display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} profileInfo={props.profileInfo}/>
                             </div>
                         ))}  
                 </div>
@@ -60,7 +60,8 @@ function SearchedResults (props, display, setDisplay, searchInput, setSearchResu
                                     song={item.name}
                                     artist={item.artists[0].name}
                                     creatingPlaylist={props.creatingPlaylist}
-                                    setCreatingPlaylist={props.setCreatingPlaylist}/>
+                                    setCreatingPlaylist={props.setCreatingPlaylist}
+                                    profileInfo={props.profileInfo}/>
                             </div>
                         ))}  
                 </div>

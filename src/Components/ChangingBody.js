@@ -1,49 +1,31 @@
 import React from "react";
-import "../css/ChangingBody.css"; 
-import SearchButton from "../buttons/SearchButton";
+import SearchBar from "./SearchBar";
 
-function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist,
-    
-    NowPlaying, setNowPlaying) {
+function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo) {
 
    
-    const handleChange = (e) => {
-        e.preventDefault();
-        props.setSearchInput(e.target.value); 
-    }; 
 
     return (
         <div>
-            <div>
-                <form>
-                    <input
-                        id='SearchBar'
-                        type="text"
-                        value={props.searchInput}
-                        onChange={handleChange}
-                    />
-                    <SearchButton 
-                        searchInput={props.searchInput}
-                        display={props.display}
-                        setDisplay = {props.setDisplay}
-                        searchResults = {props.searchResults}
-                        setSearchResults = {props.setSearchResults}
-                        setAlbumList={props.setAlbumList}
-                        albumList={props.albumList}
-                        trackList={props.trackList}
-                        setTrackList={props.setTrackList}
-                        setCreatingPlaylist={props.setCreatingPlaylist}
-                        creatingPlaylist={props.creatingPlaylist}
-                    />
-                    
-                </form>
-            </div>
+            <SearchBar 
+                profileInfo={props.profileInfo}
+                setDisplay={props.setDisplay}
+                setSearchInput={props.setSearchInput}
+                display={props.display}
+                searchInput={props.searchInput}
+                searchResults = {props.searchResults}
+                setSearchResults = {props.setSearchResults}
+                setAlbumList = {props.setAlbumList}
+                albumList={props.albumList}
+                trackList={props.trackList}
+                setTrackList={props.setTrackList}
+                setCreatingPlaylist={props.setCreatingPlaylist}
+                creatingPlaylist={props.creatingPlaylist}
+            />
             <div>{props.display}</div>
         </div>
     )
 };  
  
-
-
 
 export default ChangingBody; 

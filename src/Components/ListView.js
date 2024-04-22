@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react"
 import ViewButton from "../buttons/ViewButton"
 
-function ListView (props, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong) {
+function ListView (props, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong, profileInfo) {
     
     const [thisPlaylist, setThisPlaylist]= useState([])
 
     const [name, setName] = useState('')
+
 
     useEffect(() => {
         let thisHREF = props.href
@@ -22,13 +23,8 @@ function ListView (props, id, href, number, setDisplay, display, creatingPlaylis
         fetch(`${thisHREF}/playlists?limit=5`, authParam)
         .then(response => response.json())
         .then(result => { 
-
             setName(result.message)
-            console.log(result.playlists)
             setThisPlaylist(result.playlists.items)
-            console.log(result.playlists.items[0].href)
-            
-
         })
         .catch(error => console.log(error))
 
@@ -45,7 +41,7 @@ function ListView (props, id, href, number, setDisplay, display, creatingPlaylis
                             <p>{item.description}</p>
                             <p>{item.tracks.total}</p>
                             <ViewButton setDisplay={props.setDisplay} display={props.display} href={item.href} number={3} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} clickedSong={props.clickedSong}
-                                    setClickedSong={props.setClickedSong}/>
+                                    setClickedSong={props.setClickedSong} profileInfo={props.profileInfo}/>
                         </div>
                     ))}  
             </div>

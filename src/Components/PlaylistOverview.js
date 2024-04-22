@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from "react";
+import '../css/PlaylistOverview.css'; 
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
+import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
-function PlaylistOverview (props, href) {
+
+function PlaylistOverview (props, href, profileInfo, setDisplay) {
+
  
 const [thisList, setThisList] = useState([])
 const [name, setName] = useState('')
+const [creator, setCreator] = useState('')
+
+
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -22,19 +29,22 @@ const [name, setName] = useState('')
         .then(response => response.json())
         .then(result => { 
             setName(result.name)
-            console.log(result.tracks.items[0].name)
+            setCreator(result.owner.display_name)
             setThisList(result.tracks.items)
         })
         .catch(error => console.log(error))
     }, [props.href])
+    
 
     return (
-        <div>
+        <div id='PlaylistOverview'>
             <h1>{name}</h1>
-            <div className="options">
+            <p>Created By: {creator}</p>
+            <EditPlaylistButton name={name} profileInfo={props.profileInfo}  setName={setName} setCreator={props.setCreator} creator={creator} thisList={thisList} setThisList={setThisList} setDisplay={props.setDisplay}/>
+            <div className="list">
                 {thisList.map((item, index) => (
                     <div key={index}>
-                        <p>{item.track.name}</p>
+                        <p>{index+1} {item.track.name}</p>
                         <p>{item.track.artists[0].name}</p>
                         <AddToPlaylistButton 
                             song={item.track.name}

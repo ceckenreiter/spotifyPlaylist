@@ -4,7 +4,7 @@ import SearchedResults from "../Components/SearchedResults";
 
 
 
-function SearchButton(props, display, setDisplay, searchInput, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist) {
+function SearchButton(props, display, setDisplay, searchInput, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo) {
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -21,6 +21,7 @@ function SearchButton(props, display, setDisplay, searchInput, searchResults, se
                 setTrackList={props.setTrackList}
                 setCreatingPlaylist={props.setCreatingPlaylist}
                 creatingPlaylist={props.creatingPlaylist}
+                profileInfo={props.profileInfo}
             /> 
             )
     }

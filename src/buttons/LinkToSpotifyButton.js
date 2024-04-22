@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import SearchButton from "./SearchButton";
 
 function LinkToSpotifyButton (props, profileInfo, setProfileInfo, ID, isLogged, setIsLogged) {
 

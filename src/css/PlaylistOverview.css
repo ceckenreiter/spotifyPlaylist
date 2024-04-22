@@ -1,0 +1,38 @@
+#PlaylistOverview {
+    display: flex; 
+    flex-direction: column;
+    
+}
+#PlaylistOverview h1 {
+    margin: 1rem;
+}
+
+#PlaylistOverview p {
+    margin: 1rem; 
+}
+
+#PlaylistOverview div.list {
+    height: 50rem;
+    margin: 1rem; 
+    display: flex; 
+    flex-direction: column;
+    overflow: scroll;
+
+}
+
+
+#PlaylistOverview div.list div{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%; 
+    margin: 1rem;
+    
+}
+
+
+#PlaylistOverview div.list div p {
+    width: 30%; 
+    overflow: hidden;
+
+}

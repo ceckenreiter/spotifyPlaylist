@@ -16,7 +16,9 @@ function ProfileInformation (props, ID, SECRET, profileInfo, setProfileInfo, use
 
         fetch('https://api.spotify.com/v1/me', authParams)
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => {
+            props.setProfileInfo(json)
+        })
         .catch(error => console.log(error))
     }, [])
 

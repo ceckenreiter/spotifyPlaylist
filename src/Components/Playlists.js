@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, profileInfo, setProfileInfo ) {
+function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, username) {
 
     const [thisList, setThisList] = useState([])
 
@@ -29,9 +29,6 @@ function Playlists(props, profileInfo, setProfileInfo ) {
         
     }, [])
 
-
-    
-
     return (
         <div>
             <h1>Playlists</h1>
@@ -47,15 +44,15 @@ function Playlists(props, profileInfo, setProfileInfo ) {
                             href={item.href} 
                             number={3} 
                             creatingPlaylist={props.creatingPlaylist} 
-                            setCreatingPlaylist={props.setCreatingPlaylist} 
-                            clickedSong={props.clickedSong}
-                            setClickedSong={props.setClickedSong}/>
+                            setCreatingPlaylist={props.setCreatingPlaylist}
+                        />
                     </div>
                 ))}
+            
                 
                    
             </div> 
-            <CreatePlaylistButton setDisplay={props.setDisplay} profileInfo={props.profileInfo} setProfileInfo={props.setProfileInfo}/>
+            <CreatePlaylistButton  display={props.display} setDisplay={props.setDisplay} profileInfo={props.profileInfo} setProfileInfo={props.setProfileInfo} username={props.username}/>
         </div>    
     );
 };
