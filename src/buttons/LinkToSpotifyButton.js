@@ -8,6 +8,8 @@ const REDIRECT_URI = 'http://localhost:3000';
 const AUTHOR_ENDPOINT = 'https://accounts.spotify.com/authorize'
 const RESPONSE_TYPE ='token'
 
+const scope = 'playlist-modify-public playlist-modify-private'
+
 const [token, setToken] = useState('')
 
 
@@ -35,7 +37,7 @@ const [token, setToken] = useState('')
     return (
         <div>
             {!token ?
-            <a href={`${AUTHOR_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>
+            <a href={`${AUTHOR_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>
             <button>Link To Spotify</button>
             </a>
             :<button onClick={logout}>Log Out of Spotify</button>

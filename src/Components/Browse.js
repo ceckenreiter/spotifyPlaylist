@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import '../css/Browse.css'
 import ViewButton from '../buttons/ViewButton' 
 
-function Browse (props, display, setDisplay, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong, profileInfo) {
+function Browse (props, display, setDisplay, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle) {
 
 
     const [state, setState] = useState([])
@@ -44,9 +44,11 @@ function Browse (props, display, setDisplay, creatingPlaylist, setCreatingPlayli
                                     setDisplay={props.setDisplay}
                                     creatingPlaylist={props.creatingPlaylist}
                                     setCreatingPlaylist={props.setCreatingPlaylist}
-                                    clickedSong={props.clickedSong}
-                                    setClickedSong={props.setClickedSong}
                                     profileInfo={props.profileInfo}
+                                    playlistDescription={props.playlistDescription}
+                                    playlistTitle={props.playlistTitle}
+                                    setPlaylistDescription={props.setPlaylistDescription}
+                                    setPlaylistTitle={props.setPlaylistTitle}
                                     />
                             </div>
                         ))}  

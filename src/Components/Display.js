@@ -4,7 +4,7 @@ import ChangingBody from "./ChangingBody";
 import Browse from "./Browse";
 
 
-function Display (props, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, setProfileInfo, profileInfo, username, setUsername) {
+function Display (props, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
 
 if (props.isLogged===true) {
     return (
@@ -13,13 +13,14 @@ if (props.isLogged===true) {
             <Playlists 
                 creatingPlaylist={props.creatingPlaylist}
                 setCreatingPlaylist={props.setCreatingPlaylist}
-
+                playlistDescription={props.playlistDescription}
+                playlistTitle={props.playlistTitle}
+                setPlaylistDescription={props.setPlaylistDescription}
+                setPlaylistTitle={props.setPlaylistTitle}
                 display={props.display}
                 setDisplay={props.setDisplay}
-            
                 setProfileInfo={props.setProfileInfo}
                 profileInfo={props.profileInfo}
-
                 username={props.username}
                 setUsername={props.setUsername}
                 />
@@ -40,6 +41,10 @@ if (props.isLogged===true) {
                     setCreatingPlaylist={props.setCreatingPlaylist}
                     setProfileInfo={props.setProfileInfo}
                     profileInfo={props.profileInfo}
+                    playlistDescription={props.playlistDescription}
+                    playlistTitle={props.playlistTitle}
+                    setPlaylistDescription={props.setPlaylistDescription}
+                    setPlaylistTitle={props.setPlaylistTitle}
                 />
                 <Browse 
                     setDisplay={props.setDisplay}
@@ -47,6 +52,11 @@ if (props.isLogged===true) {
                     setCreatingPlaylist={props.setCreatingPlaylist}
                     setProfileInfo={props.setProfileInfo}
                     profileInfo={props.profileInfo}
+                    playlistDescription={props.playlistDescription}
+                    playlistTitle={props.playlistTitle}
+                    setPlaylistDescription={props.setPlaylistDescription}
+                    setPlaylistTitle={props.setPlaylistTitle}
+                    
                 />
             </div>
         </div>

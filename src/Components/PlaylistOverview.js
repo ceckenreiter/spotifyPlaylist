@@ -4,7 +4,7 @@ import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 
-function PlaylistOverview (props, href, profileInfo, setDisplay) {
+function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle) {
 
  
 const [thisList, setThisList] = useState([])

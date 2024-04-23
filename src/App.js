@@ -18,8 +18,9 @@ function App() {
   const [trackList, setTrackList] = useState([]) // for ArtistOverview
   const [creatingPlaylist, setCreatingPlaylist] = useState([]); // for creating list we want to export
   const [isLogged, setIsLogged] = useState(false) // for testing if logged on
-  const [clickedSong, setClickedSong] = useState('') // adding songs to playlist
   const [username, setUsername] = useState('')
+  const [playlistTitle, setPlaylistTitle] = useState('')
+  const [playlistDescription, setPlaylistDescription] = useState('')
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
   const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"
@@ -71,13 +72,16 @@ function App() {
         setTrackList = {setTrackList}
         creatingPlaylist={creatingPlaylist}
         setCreatingPlaylist={setCreatingPlaylist}
-        clickedSong={clickedSong}
-        setClickedSong={setClickedSong}
+        
         setProfileInfo={setProfileInfo}
         profileInfo={profileInfo}
         username={username}
         setUsername={setUsername}
-        
+        playlistDescription={playlistDescription}
+        playlistTitle={playlistTitle}
+        setPlaylistDescription={setPlaylistDescription}
+        setPlaylistTitle = {setPlaylistTitle}
+
       />
      </div>
   );

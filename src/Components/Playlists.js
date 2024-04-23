@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import '../css/Tracklist.css';
-import CreatePlaylistButton from "../buttons/CreatePlaylistButton";
+import CreatePlaylistButton from "../buttons/NewPlaylist";
 import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, username) {
+function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
 
     const [thisList, setThisList] = useState([])
+    
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -33,10 +34,12 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
         <div>
             <h1>Playlists</h1>
             <div className='Tracklist' >
-            {thisList.map((item, index) => (
+            
+{thisList.map((item, index) => (
                     <div key={index}>
                         <p>{item.name}</p>
                         <ViewButton 
+                            profileInfo={props.profileInfo}
                             thisList={thisList}
                             setThisList={setThisList}
                             setDisplay={props.setDisplay} 
@@ -45,6 +48,11 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
                             number={3} 
                             creatingPlaylist={props.creatingPlaylist} 
                             setCreatingPlaylist={props.setCreatingPlaylist}
+                            playlistDescription={props.playlistDescription}
+                            playlistTitle={props.playlistTitle}
+                            setPlaylistDescription={props.setPlaylistDescription}
+                            setPlaylistTitle={props.setPlaylistTitle}
+                          
                         />
                     </div>
                 ))}
@@ -52,7 +60,18 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
                 
                    
             </div> 
-            <CreatePlaylistButton  display={props.display} setDisplay={props.setDisplay} profileInfo={props.profileInfo} setProfileInfo={props.setProfileInfo} username={props.username}/>
+            <CreatePlaylistButton  
+                display={props.display} 
+                setDisplay={props.setDisplay} 
+                profileInfo={props.profileInfo} 
+                setProfileInfo={props.setProfileInfo} 
+                username={props.username} 
+                playlistDescription={props.playlistDescription}
+                playlistTitle={props.playlistTitle}
+                setPlaylistDescription={props.setPlaylistDescription}
+                setPlaylistTitle={props.setPlaylistTitle}
+              
+            />
         </div>    
     );
 };
