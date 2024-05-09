@@ -2,38 +2,13 @@ import React, { useState } from "react";
 import '../css/EditPlaylist.css'
 import SaveToSpotifyButton from "../buttons/SaveToSpotifyButton";
 import ViewButton from "../buttons/ViewButton";
+import DeletePlaylist from "../buttons/DeletePlaylistButton";
 
 
-function EditPlaylistView (props, profileInfo, name, setName, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription) {
+function EditPlaylistView (props, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription) {
 
-    const [view, setView] = useState(<div>Add Songs</div>)
-
-   
-
-
-    async function postData(url = '', data = {}) {
-        let token = window.localStorage.getItem('token')
-        
-        const response = await fetch(url, 
-            {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-                },
-            body: JSON.stringify(data),
-            });
-        
-        return response.json(); 
-      }
-
-      
-      postData(`https://api.spotify.com/v1/users/foodredflower/playlists`, {name: 'hello',  description: 'testscheme'})
-      .then((data) => {
-        console.log(data); // JSON data parsed by `data.json()` call
-      });
-
-
+    const [view, setView] = useState(<div>No Songs Yet Add Some Songs</div>)
+    
     if (props.thisList==='') {
         setView(
             <div>
@@ -70,8 +45,7 @@ function EditPlaylistView (props, profileInfo, name, setName, setCreator, creato
 
     return (
         <div>
-            <div id='editPlaylist'>
-                
+            <form id='editPlaylist'>
                 <input 
                     defaultValue={props.playlistTitle} 
                     onChange={handleTitleChange}
@@ -81,10 +55,11 @@ function EditPlaylistView (props, profileInfo, name, setName, setCreator, creato
                     onChange={handleDescriptionChange}
                 />
                 <p>Created By: {props.creator}</p>
-            </div>
+            </form>
             <div>{view}</div>
+            <DeletePlaylist />
 
-            <SaveToSpotifyButton />
+            <SaveToSpotifyButton playlistDescription={props.playlistDescription} playlistTitle={props.playlistTitle} />
             
         </div>
        

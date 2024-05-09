@@ -20,9 +20,9 @@ const [token, setToken] = useState('')
         if (!token && hash) { //checks if we get a access token//
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             window.location.hash=""
-            window.localStorage.setItem('token', token)  
+            window.localStorage.setItem('token', token) 
+            props.setIsLogged(true) 
         }
-        props.setIsLogged(true)
         setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
     }, [])
 

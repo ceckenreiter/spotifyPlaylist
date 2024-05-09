@@ -4,11 +4,11 @@ import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 
-function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle) {
+function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle) {
 
- 
+ console.log(props.playlistTitle)
+
 const [thisList, setThisList] = useState([])
-const [name, setName] = useState('')
 const [creator, setCreator] = useState('')
 
 
@@ -28,7 +28,7 @@ const [creator, setCreator] = useState('')
         fetch(`${url}`, authParam)
         .then(response => response.json())
         .then(result => { 
-            setName(result.name)
+            props.setPlaylistTitle(result.name)
             setCreator(result.owner.display_name)
             setThisList(result.tracks.items)
         })
@@ -38,9 +38,9 @@ const [creator, setCreator] = useState('')
 
     return (
         <div id='PlaylistOverview'>
-            <h1>{name}</h1>
+            <h1>{props.playlistTitle}</h1>
             <p>Created By: {creator}</p>
-            <EditPlaylistButton name={name} profileInfo={props.profileInfo}  setName={setName} setCreator={props.setCreator} creator={creator} thisList={thisList} setThisList={setThisList} setDisplay={props.setDisplay}/>
+            <EditPlaylistButton profileInfo={props.profileInfo} playlistTitle={props.playlistTitle} setCreator={props.setCreator} creator={creator} thisList={thisList} setThisList={setThisList} setDisplay={props.setDisplay} setPlaylistDescription={props.setPlaylistDescription} setPlaylistTitle={props.setPlaylistTitle}/>
             <div className="list">
                 {thisList.map((item, index) => (
                     <div key={index}>

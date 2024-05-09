@@ -34,31 +34,8 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
         <div>
             <h1>Playlists</h1>
             <div className='Tracklist' >
-            
-{thisList.map((item, index) => (
-                    <div key={index}>
-                        <p>{item.name}</p>
-                        <ViewButton 
-                            profileInfo={props.profileInfo}
-                            thisList={thisList}
-                            setThisList={setThisList}
-                            setDisplay={props.setDisplay} 
-                            display={props.display} 
-                            href={item.href} 
-                            number={3} 
-                            creatingPlaylist={props.creatingPlaylist} 
-                            setCreatingPlaylist={props.setCreatingPlaylist}
-                            playlistDescription={props.playlistDescription}
-                            playlistTitle={props.playlistTitle}
-                            setPlaylistDescription={props.setPlaylistDescription}
-                            setPlaylistTitle={props.setPlaylistTitle}
-                          
-                        />
-                    </div>
-                ))}
-            
                 
-                   
+                    
             </div> 
             <CreatePlaylistButton  
                 display={props.display} 
