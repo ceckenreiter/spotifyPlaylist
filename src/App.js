@@ -21,6 +21,7 @@ function App() {
   const [username, setUsername] = useState('')
   const [playlistTitle, setPlaylistTitle] = useState('')
   const [playlistDescription, setPlaylistDescription] = useState('')
+  const [thisList, setThisList] = useState([])
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
   const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"
@@ -72,6 +73,8 @@ function App() {
         setTrackList = {setTrackList}
         creatingPlaylist={creatingPlaylist}
         setCreatingPlaylist={setCreatingPlaylist}
+        thisList={thisList}
+        setThisList={setThisList}
         
         setProfileInfo={setProfileInfo}
         profileInfo={profileInfo}

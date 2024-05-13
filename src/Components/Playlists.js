@@ -5,10 +5,8 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
+function Playlists(props, thisList, setThisList, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
 
-    const [thisList, setThisList] = useState([])
-    
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -24,7 +22,7 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
         fetch('https://api.spotify.com/v1/me/playlists', authParam)
         .then(response => response.json())
         .then(result => { 
-            setThisList(result.items)
+            props.setThisList(result.items)
         })
         .catch(error => console.log(error))
         
@@ -34,6 +32,27 @@ function Playlists(props, display, profileInfo, setProfileInfo, setDisplay, user
         <div>
             <h1>Playlists</h1>
             <div className='Tracklist' >
+            {props.thisList.map((item, index) => (
+                    <div key={index}>
+                        <p>{item.name}{props.setPlaylistTitle(item.name)}</p>
+                        <ViewButton 
+                            profileInfo={props.profileInfo}
+                            thisList={props.thisList}
+                            setThisList={props.setThisList}
+                            setDisplay={props.setDisplay} 
+                            display={props.display} 
+                            href={item.href} 
+                            number={3} 
+                            creatingPlaylist={props.creatingPlaylist} 
+                            setCreatingPlaylist={props.setCreatingPlaylist}
+                            playlistDescription={props.playlistDescription}
+                            playlistTitle={props.playlistTitle}
+                            setPlaylistDescription={props.setPlaylistDescription}
+                            setPlaylistTitle={props.setPlaylistTitle}
+                          
+                        />
+                    </div>
+                ))}
                 
                     
             </div> 

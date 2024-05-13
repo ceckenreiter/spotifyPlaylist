@@ -34,7 +34,7 @@ function Browse (props, display, setDisplay, creatingPlaylist, setCreatingPlayli
                 <div className="options">
                     {state.map((item, index) => (
                             <div key={index}>
-                               <p>{item.name}</p>
+                               <p>{item.name}{props.setPlaylistTitle(item.name)}</p>
                                <ViewButton 
                                     id={item.id} 
                                     href={item.href}
