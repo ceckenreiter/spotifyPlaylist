@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 import DeletePlaylist from "../buttons/DeletePlaylistButton";
 
 
-function EditPlaylistView (props, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription) {
+function EditPlaylistView (props, itemID, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription) {
 
     const [view, setView] = useState(<div>No Songs Yet Add Some Songs</div>)
     
@@ -59,7 +59,7 @@ function EditPlaylistView (props, profileInfo, setCreator, creator, thisList, se
             <div>{view}</div>
             <DeletePlaylist />
 
-            <SaveToSpotifyButton playlistDescription={props.playlistDescription} playlistTitle={props.playlistTitle} />
+            <SaveToSpotifyButton itemID={props.itemID} playlistDescription={props.playlistDescription} playlistTitle={props.playlistTitle} />
             
         </div>
        

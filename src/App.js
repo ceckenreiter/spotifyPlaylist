@@ -55,15 +55,7 @@ const [thisHREF, setThisHREF] = useState('')
 const [creator, setCreator] = useState('')
 
 
-    useEffect(() => {
-        let token = window.localStorage.getItem('token')
-        var authParam = {
-            method: 'GET', 
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/x-www-form-urelencoded"
-            },
-        }
+    useEffect(() => {        
         if (thisHREF !== '') {
           const blankFunction = async() => {
             let token = window.localStorage.getItem('token')
@@ -80,12 +72,11 @@ const [creator, setCreator] = useState('')
                 setPlaylistTitle(response.name)
                 setPlaylistDescription(response.description)
                 setCreator(response.owner.display_name)
-                console.log(response)
                 setThisList(response.tracks.items)
                 setDisplay(
                   <PlaylistOverview 
+                    itemID={response.id}
                     setDisplay={setDisplay}
-                    display={display}
                     thisList={response.tracks.items}
                     setThisList={setThisList}
                     playlistTitle={response.name}
@@ -98,13 +89,13 @@ const [creator, setCreator] = useState('')
                     profileInfo={profileInfo}
                   />)
             })
-          .catch(response => console.log)
+          .catch(response => console.log(response))
         }
         
         blankFunction()
               
         }
-    }, [thisHREF])
+    }, [thisHREF, profileInfo])
   
 
 
@@ -127,12 +118,6 @@ const [creator, setCreator] = useState('')
         .catch(error => console.log(error))
   }, [])
     
-
-
-
-
-
-  
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
   const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"

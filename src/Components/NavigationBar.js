@@ -6,13 +6,13 @@ function NavigationBar (props, isLogged, setIsLogged, profileInfo, setProfileInf
     
         return(
             <nav>
-                <p>Powered By <a target="_blank" href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>
+                <p>Powered By <a target="_blank" rel='noreferrer' href="https://ceckenreiter.github.io">GoodBoi Inc.</a></p>
                {props.isLogged ? 
                     <div>
-                        <p><a target='_blank' href="https://spotify.com">{props.profileInfo.id}</a></p> 
+                        <p><a target='_blank' rel='noreferrer' href="https://spotify.com">{props.profileInfo.id}</a></p> 
                     </div>
                 :
-                <a target="#LoginPage" >Login</a>
+                <button target="#LoginPage" >Login</button>
                }
             </nav>
         )

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import '../css/PlaylistOverview.css'; 
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
@@ -12,7 +12,7 @@ function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlay
         <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
             <p>Created By: {props.creator}</p>
-            <EditPlaylistButton profileInfo={props.profileInfo} playlistTitle={props.playlistTitle} setCreator={props.setCreator} creator={props.creator} thisList={props.thisList} setThisList={props.setThisList} setDisplay={props.setDisplay} setPlaylistDescription={props.setPlaylistDescription} setPlaylistTitle={props.setPlaylistTitle}/>
+            <EditPlaylistButton itemID={props.itemID} profileInfo={props.profileInfo} playlistTitle={props.playlistTitle} creator={props.creator} thisList={props.thisList} setThisList={props.setThisList} setDisplay={props.setDisplay} setPlaylistDescription={props.setPlaylistDescription} setPlaylistTitle={props.setPlaylistTitle}/>
             <div className="list">
                 {props.thisList.map((item, index) => (
                     <div key={index}>

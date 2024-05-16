@@ -1,12 +1,23 @@
 import React from "react";
 
-function SaveToSpotifyButton (props, playlistTitle, playlistDescription) {
+function SaveToSpotifyButton (props, itemID, playlistTitle, playlistDescription) {
+
+    const title = props.playlistTitle
+    console.log(title)
 
     const handleClick = (e) => {
 
-    async function postData(url = '', data = {}) {
+       
+
+    async function sendToSpotify(url = '') {
         let token = window.localStorage.getItem('token')
-        
+
+        const data = 
+            {
+                "name": 'this title', 
+                "description": 'newdescription',
+            }
+
         const response = await fetch(url, 
             {
             method: "PUT",
@@ -14,16 +25,16 @@ function SaveToSpotifyButton (props, playlistTitle, playlistDescription) {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
                 },
-            body: JSON.stringify(data),
-            });
+            body: JSON.stringify(data)
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(response => console.log(response))
         
-        return response.json(); 
       }
 
-      postData(`https://api.spotify.com/v1/playlists/${playlist_id}`, {name: props.playlistTitle,  description: props.playlistDescription})
-      .then((data) => {
-        console.log(data); // JSON data parsed by `data.json()` call
-      });
+      sendToSpotify(`https://api.spotify.com/v1/playlists/${props.itemID}`)
     }
 
 
