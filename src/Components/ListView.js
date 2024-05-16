@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from "react"
 import ViewButton from "../buttons/ViewButton"
 
-function ListView (props, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong, profileInfo, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
+function ListView (props, thisHREF, thisList, setThisList, setThisHREF, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong, profileInfo, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
     
     const [thisPlaylist, setThisPlaylist]= useState([])
     const [theme, setTheme] = useState('')
 
-
-
     useEffect(() => {
-        let thisHREF = props.href
         let token = window.localStorage.getItem('token')
 
         var authParam = {
@@ -20,14 +17,13 @@ function ListView (props, id, href, number, setDisplay, display, creatingPlaylis
             },
         }
 
-        fetch(`${thisHREF}/playlists?limit=5`, authParam)
+        fetch(`${props.href}/playlists?limit=5`, authParam)
         .then(response => response.json())
         .then(result => { 
             setTheme(result.message)
             setThisPlaylist(result.playlists.items)
         })
         .catch(error => console.log(error))
-
 
     },[props.href])
 
@@ -42,10 +38,15 @@ function ListView (props, id, href, number, setDisplay, display, creatingPlaylis
                             <p>{item.name}</p>
                             <p>{item.description}</p>
                             <p>{item.tracks.total}</p>
+                            <p>{item.href}</p>
                             <ViewButton 
                                 setDisplay={props.setDisplay} 
                                 display={props.display} 
                                 href={item.href} 
+                                thisList={props.thisList}
+                                setThisList={props.setThisList}
+                                thisHREF={props.thisHREF}
+                                setThisHREF={props.setThisHREF}
                                 title={item.name}
                                 number={3} 
                                 creatingPlaylist={props.creatingPlaylist} 

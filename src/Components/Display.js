@@ -1,20 +1,20 @@
-import React, {useState} from "react";
+import React from "react";
 import Playlists from "./Playlists";
 import ChangingBody from "./ChangingBody";
 import Browse from "./Browse";
 
 
-function Display (props, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
+function Display (props, state, setState, thisHREF, setThisHREF, creator, setCreator, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
 
 if (props.isLogged===true) {
     return (
         <div className='SpecificContent'>
             <div className='left'>
             <Playlists 
-                creatingPlaylist={props.creatingPlaylist}
                 thisList={props.thisList}
                 setThisList={props.setThisList}
-                setCreatingPlaylist={props.setCreatingPlaylist}
+                thisHREF={props.thisHREF}
+                setThisHREF={props.setThisHREF}
                 playlistDescription={props.playlistDescription}
                 playlistTitle={props.playlistTitle}
                 setPlaylistDescription={props.setPlaylistDescription}
@@ -25,11 +25,15 @@ if (props.isLogged===true) {
                 profileInfo={props.profileInfo}
                 username={props.username}
                 setUsername={props.setUsername}
+                setCreator={props.setCreator}
+                creator={props.creator}
                 />
             </div>
             <div className='right'>
                 <ChangingBody 
                     searchInput={props.searchInput}
+                    thisList={props.thisList}
+                    setThisList={props.setThisList}
                     display={props.display}
                     setSearchInput={props.setSearchInput}
                     setDisplay={props.setDisplay}
@@ -39,8 +43,8 @@ if (props.isLogged===true) {
                     albumList={props.albumList}
                     trackList = {props.trackList}
                     setTrackList = {props.setTrackList}
-                    creatingPlaylist={props.creatingPlaylist}
-                    setCreatingPlaylist={props.setCreatingPlaylist}
+                    setCreator={props.setCreator}
+                    creator={props.creator}
                     setProfileInfo={props.setProfileInfo}
                     profileInfo={props.profileInfo}
                     playlistDescription={props.playlistDescription}
@@ -50,15 +54,20 @@ if (props.isLogged===true) {
                 />
                 <Browse 
                     setDisplay={props.setDisplay}
-                    creatingPlaylist={props.creatingPlaylist}
-                    setCreatingPlaylist={props.setCreatingPlaylist}
+                    thisList={props.thisList}
+                    setState={props.setState}
+                    state={props.state}
+                    setThisList={props.setThisList}
+                    creator={props.creator}
+                    setCreator={props.setCreator}
+                    thisHREF={props.thisHREF}
+                    setThisHREF={props.setThisHREF}
                     setProfileInfo={props.setProfileInfo}
                     profileInfo={props.profileInfo}
                     playlistDescription={props.playlistDescription}
                     playlistTitle={props.playlistTitle}
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
-                    
                 />
             </div>
         </div>

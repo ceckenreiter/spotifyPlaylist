@@ -5,8 +5,9 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, thisList, setThisList, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
+function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
 
+    const [myList, setMyList] = useState([])
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -22,7 +23,7 @@ function Playlists(props, thisList, setThisList, display, profileInfo, setProfil
         fetch('https://api.spotify.com/v1/me/playlists', authParam)
         .then(response => response.json())
         .then(result => { 
-            props.setThisList(result.items)
+            setMyList(result.items)
         })
         .catch(error => console.log(error))
         
@@ -32,12 +33,14 @@ function Playlists(props, thisList, setThisList, display, profileInfo, setProfil
         <div>
             <h1>Playlists</h1>
             <div className='Tracklist' >
-            {props.thisList.map((item, index) => (
+            {myList.map((item, index) => (
                     <div key={index}>
-                        <p>{item.name}{props.setPlaylistTitle(item.name)}</p>
+                        <p>{item.name}</p>
                         <ViewButton 
                             profileInfo={props.profileInfo}
                             thisList={props.thisList}
+                            setThisHREF={props.setThisHREF}
+                            thisHREF={props.thisHREF}
                             setThisList={props.setThisList}
                             setDisplay={props.setDisplay} 
                             display={props.display} 

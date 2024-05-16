@@ -4,7 +4,7 @@ import ListView from "../Components/ListView";
 import PlaylistOverview from "../Components/PlaylistOverview";
 
 
-function ViewButton (props, itemID,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle) {
+function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle) {
 
     const handleClick = (e) => {
 
@@ -34,23 +34,15 @@ function ViewButton (props, itemID,  title, display, setDisplay, number, id, hre
                     playlistTitle={props.playlistTitle}
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
+                    setThisHREF={props.setThisHREF}
+                    thisHREF={props.thisHREF}
+                    thisList={props.thisList}
+                    setThisList={props.setThisList}
+                    
                 />)
         } else if (props.number===3) {
-            
-            props.setDisplay( 
-                <PlaylistOverview 
-                    itemID={props.itemID}
-                    href={props.href} 
-                    creatingPlaylist={props.creatingPlaylist} 
-                    setCreatingPlaylist={props.setCreatingPlaylist} 
-                    profileInfo={props.profileInfo} 
-                    setDisplay={props.setDisplay} 
-                    playlistDescription={props.playlistDescription}
-                    playlistTitle={props.playlistTitle}
-                    setPlaylistDescription={props.setPlaylistDescription}
-                    setPlaylistTitle={props.setPlaylistTitle}
-                />)
-           
+            props.setThisHREF(props.href)
+
         }
     }
 
