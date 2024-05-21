@@ -58,7 +58,6 @@ const [thisHREF, setThisHREF] = useState('')
 const [creator, setCreator] = useState('')
 
 
-
     useEffect(() => {        
         if (thisHREF !== '') {
           const getPlaylist = async() => {
@@ -83,7 +82,7 @@ const [creator, setCreator] = useState('')
                     playlistID={response.id}
                     setPlaylistID={setPlaylistID}
                     deletePlaylist={deletePlaylist}
-                    updatePlaylist={updatePlaylist}
+                    createNewPlaylist={createNewPlaylist}
                     setDisplay={setDisplay}
                     thisList={response.tracks.items}
                     setThisList={setThisList}
@@ -95,6 +94,7 @@ const [creator, setCreator] = useState('')
                     setCreator={setCreator}
                     creator={response.owner.display_name}
                     profileInfo={profileInfo}
+                    updatePlaylist={updatePlaylist}
                   />)
             })
           .catch(response => console.log(response))
@@ -104,12 +104,10 @@ const [creator, setCreator] = useState('')
               
         }
     }, [thisHREF, profileInfo])
-  
-
 
     const [state, setState] = useState([])
 
-    useEffect(() => {
+ useEffect(() => {
         let token = window.localStorage.getItem('token')
         var authParam = {
             method: 'GET', 
@@ -128,7 +126,30 @@ const [creator, setCreator] = useState('')
   }, [])
 
 
-  function updatePlaylist(title, description) {
+  const [myPlaylists, setMyPlaylists] = useState([])
+
+  useEffect(() => {
+    let token = window.localStorage.getItem('token')
+    var authParam = {
+        method: 'GET', 
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/x-www-form-urelencoded"
+        },
+    }
+
+    fetch('https://api.spotify.com/v1/me/playlists', authParam)
+        .then(response => response.json())
+        .then(result => { 
+            console.log(result)
+            setMyPlaylists(result.items)
+        })
+        .catch(error => console.log(error))
+}, [myPlaylists])
+
+
+
+  function createNewPlaylist(title, description) {
     setPlaylistTitle(title)
     setPlaylistDescription(description)
     console.log(title, description)
@@ -142,7 +163,7 @@ const [creator, setCreator] = useState('')
           'description': `${description}`,
       }
 
-      const blank = await fetch(`https://api.spotify.com/v1/users/${profileInfo.display_name}/playlists`, {
+      await fetch(`https://api.spotify.com/v1/users/${profileInfo.display_name}/playlists`, {
               method: 'POST', 
               headers: {
                   Authorization: `Bearer ${token}`,
@@ -156,28 +177,53 @@ const [creator, setCreator] = useState('')
               console.log(result.id)
           })
           .catch(error => console.log(error))
-  }
-
+    }
     newPlaylist()
     setDisplay(
       <EditPlaylistView 
-        playlistTitle={playlistTitle}
-        playlistDescription={playlistDescription}
+        thisList={thisList}
+        playlistTitle={title}
+        playlistDescription={description}
         creator={profileInfo.display_name}
         updatePlaylist={updatePlaylist}
+        createNewPlaylist={createNewPlaylist}
         deletePlaylist={deletePlaylist}
         playlistID={playlistID}
         setPlaylistID={setPlaylistID}
-      
       />)
+  }
 
+  function updatePlaylist (title, description, ID) {
+    const  update = async(url = '') => {
+      let token = window.localStorage.getItem('token')
+      let data = {
+            'name': `${title}`,
+            'description': `${description}`,
+        }
+  
+        await fetch(`https://api.spotify.com/v1/playlists/${ID}`, {
+                method: 'PUT', 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/x-www-form-urelencoded"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(result => { 
+                console.log(result)
+                
+            })
+            .catch(error => console.log(error))
+    }
+  
+  update(`https://api.spotify.com/v1/playlists/${playlistID}/followers`)
+  setDisplay(<p>Successfully Updated Playlist</p>)
   }
 
   function deletePlaylist (playlistID) {
     const  DeleteData = async(url = '') => {
       let token = window.localStorage.getItem('token')
-      console.log(playlistID)
-      const response = await fetch(url, 
+      await fetch(url, 
           {
           method: "DELETE",
           headers: {
@@ -192,10 +238,37 @@ const [creator, setCreator] = useState('')
   }
   
   DeleteData(`https://api.spotify.com/v1/playlists/${playlistID}/followers`)
+  setDisplay(<p>Successfully Deleted Playlist</p>)
 
 
   }
 
+  function choosePlaylist (id, uri) {
+    const  choose = async() => {
+      let token = window.localStorage.getItem('token')
+      let data = {
+          "uris": [],
+          "position": 0
+        }
+  
+        await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+                method: 'PUT', 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/x-www-form-urelencoded"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(result => { 
+                console.log(result)
+                
+            })
+            .catch(error => console.log(error))
+    }
+  
+  choose(``)
+  setDisplay(<p>Added Song</p>)
+  }
     
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
@@ -262,11 +335,13 @@ const [creator, setCreator] = useState('')
         playlistTitle={playlistTitle}
         setPlaylistDescription={setPlaylistDescription}
         setPlaylistTitle = {setPlaylistTitle}
+        createNewPlaylist={createNewPlaylist}
         updatePlaylist={updatePlaylist}
         deletePlaylist={deletePlaylist}
         playlistID={playlistID}
         setPlaylistID={setPlaylistID}
-
+        myPlaylists={myPlaylists}
+       
       />
      </div>
   );

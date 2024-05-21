@@ -5,36 +5,14 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, deletePlaylist, setPlaylistID, playlistID) {
+function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, createNewPlaylist, deletePlaylist, setPlaylistID, playlistID, myPlaylists) {
 
-    const [myList, setMyList] = useState([])
-
-
-    useEffect(() => {
-        let token = window.localStorage.getItem('token')
-
-        var authParam = {
-            method: 'GET', 
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/x-www-form-urelencoded"
-            },
-       
-        }  
-        fetch('https://api.spotify.com/v1/me/playlists', authParam)
-        .then(response => response.json())
-        .then(result => { 
-            setMyList(result.items)
-        })
-        .catch(error => console.log(error))
-        
-    }, [])
 
     return (
         <div>
             <h1>Playlists</h1>
             <div className='Tracklist' >
-            {myList.map((item, index) => (
+            {props.myPlaylists.map((item, index) => (
                     <div key={index}>
                         <p>{item.name}</p>
                         <ViewButton 
@@ -47,12 +25,11 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                             display={props.display} 
                             href={item.href} 
                             number={3} 
-                            creatingPlaylist={props.creatingPlaylist} 
-                            setCreatingPlaylist={props.setCreatingPlaylist}
                             playlistDescription={props.playlistDescription}
                             playlistTitle={props.playlistTitle}
                             setPlaylistDescription={props.setPlaylistDescription}
                             setPlaylistTitle={props.setPlaylistTitle}
+                            createNewPlaylist={props.createNewPlaylist}
                             updatePlaylist={props.updatePlaylist}
                             deletePlaylist={props.deletePlaylist}
                             setPlaylistID={props.setPlaylistID}
@@ -74,7 +51,7 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                 playlistTitle={props.playlistTitle}
                 setPlaylistDescription={props.setPlaylistDescription}
                 setPlaylistTitle={props.setPlaylistTitle}
-                updatePlaylist={props.updatePlaylist}
+                createNewPlaylist={props.createNewPlaylist}
                 deletePlaylist={props.deletePlaylist}
                 setPlaylistID={props.setPlaylistID}
                 playlistID={props.playlistID}

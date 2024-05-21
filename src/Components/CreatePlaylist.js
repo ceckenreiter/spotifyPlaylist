@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, playlistID, setPlaylistID, DupdatePlaylist) {
+function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, playlistID, setPlaylistID, createNewPlaylist) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -18,7 +18,7 @@ function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlist
 }
 
     const changePage = (e) => {
-        props.updatePlaylist(title, description)
+        props.createNewPlaylist(title, description)
     }
 
 

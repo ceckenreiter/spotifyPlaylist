@@ -4,17 +4,18 @@ import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 
-function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, deletePlaylist, playlistID) {
+function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, createNewPlaylist, deletePlaylist, playlistID) {
     
     return (
         <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
             <p>Created By: {props.creator}</p>
-            <p>{props.playlistID}</p>
+            <p>{props.playlistDescription}</p>
             <EditPlaylistButton
                 playlistID={props.playlistID} 
                 profileInfo={props.profileInfo} 
                 playlistTitle={props.playlistTitle} 
+                playlistDescription={props.playlistDescription}
                 creator={props.creator} 
                 thisList={props.thisList} 
                 setThisList={props.setThisList} 
@@ -22,6 +23,7 @@ function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDesc
                 setPlaylistDescription={props.setPlaylistDescription} 
                 setPlaylistTitle={props.setPlaylistTitle}
                 deletePlaylist={props.deletePlaylist}
+                createNewPlaylist={props.createNewPlaylist}
                 updatePlaylist={props.updatePlaylist}
                 
                 />

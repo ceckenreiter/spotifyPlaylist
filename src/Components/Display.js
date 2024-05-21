@@ -4,7 +4,7 @@ import ChangingBody from "./ChangingBody";
 import Browse from "./Browse";
 
 
-function Display (props, state, setState, thisHREF, setThisHREF, creator, setCreator, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, playlistID,deletePlaylist, setPlaylistID) {
+function Display (props, state, setState, thisHREF, setThisHREF, creator, setCreator, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, createNewPlaylist, playlistID, deletePlaylist, setPlaylistID, updatePlaylist, myPlaylists) {
 
 
 if (props.isLogged===true) {
@@ -28,10 +28,13 @@ if (props.isLogged===true) {
                 setUsername={props.setUsername}
                 setCreator={props.setCreator}
                 creator={props.creator}
-                updatePlaylist={props.updatePlaylist}     
+                createNewPlaylist={props.createNewPlaylist}     
                 deletePlaylist={props.deletePlaylist}
                 playlistID={props.playlistID}
-                setPlaylistID={props.setPlaylistID}         />
+                setPlaylistID={props.setPlaylistID}  
+                updatePlaylist={props.updatePlaylist} 
+                myPlaylists={props.myPlaylists}
+                 />
             </div>
             <div className='right'>
                 <ChangingBody 
@@ -55,6 +58,7 @@ if (props.isLogged===true) {
                     playlistTitle={props.playlistTitle}
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
+                    
                 />
                 <Browse 
                     setDisplay={props.setDisplay}

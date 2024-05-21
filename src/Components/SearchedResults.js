@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React from "react";
 import './ChangingBody'
 import '../css/SearchedResults.css'
 import ViewButton from "../buttons/ViewButton";
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
 
-function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo) {
+function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myList) {
 
     
    
@@ -35,12 +35,12 @@ function SearchedResults (props, setDisplay, display, searchInput, setSearchResu
                                     <p>{item.name}</p>
                                     <p>{item.album.name}</p>
                                     <p>{item.artists[0].name}</p>
+                                    <p>{item.uri}</p>
                                 </button>
                                 <AddToPlaylistButton 
-                                    song={item.name}
-                                    artist={item.artists[0].name}
-                                    creatingPlaylist={props.creatingPlaylist}
-                                    setCreatingPlaylist={props.setCreatingPlaylist}
+                                    myList={props.myList}
+                                    URI={item.uri}
+                                    setDisplay={props.setDisplay}
                                     profileInfo={props.profileInfo}/>
                             </div>
                         ))}  
