@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddToPlaylistButton (props, uri, setDisplay) {
+function AddToPlaylistButton (props, myPlaylists, uri, setDisplay) {
     
     
     const handleClick = () => {
@@ -9,7 +9,7 @@ function AddToPlaylistButton (props, uri, setDisplay) {
             <div>
                 <p>Choose Which Playlist</p>
                 <div className='Tracklist' >
-                    {props.myList.map((item, index) => (
+                    {props.myPlaylists.map((item, index) => (
                         <div key={index}>
                             <button setDisplay={props.setDisplay} uri={props.uri} id={item.id}>{item.name}</button>
                         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "../css/SearchBar.css"; 
 import SearchButton from "../buttons/SearchButton";
 
-function SearchBar (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myList) {
+function SearchBar (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myPlaylists) {
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -32,7 +32,7 @@ function SearchBar (props, searchInput, setSearchInput, display, setDisplay, sea
                         setCreatingPlaylist={props.setCreatingPlaylist}
                         creatingPlaylist={props.creatingPlaylist}
                         profileInfo={props.profileInfo}
-                        myList={props.myList}
+                        myPlaylists={props.myPlaylists}
                     />
                 </form>
             </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 
-function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myList) {
+function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, searchResults, setSearchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myPlaylists) {
 
    
 
@@ -21,7 +21,7 @@ function ChangingBody (props, searchInput, setSearchInput, display, setDisplay, 
                 setTrackList={props.setTrackList}
                 setCreatingPlaylist={props.setCreatingPlaylist}
                 creatingPlaylist={props.creatingPlaylist}
-                myList={props.myList}
+                myPlaylists={props.myPlaylists}
             />
             <div>{props.display}</div>
         </div>

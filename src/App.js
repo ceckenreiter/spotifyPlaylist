@@ -125,9 +125,6 @@ const [creator, setCreator] = useState('')
         .catch(error => console.log(error))
   }, [])
 
-
-  const [myPlaylists, setMyPlaylists] = useState([])
-
   useEffect(() => {
     let token = window.localStorage.getItem('token')
     var authParam = {
@@ -141,13 +138,31 @@ const [creator, setCreator] = useState('')
     fetch('https://api.spotify.com/v1/me/playlists', authParam)
         .then(response => response.json())
         .then(result => { 
-            console.log(result)
             setMyPlaylists(result.items)
         })
         .catch(error => console.log(error))
-}, [myPlaylists])
+}, [])
 
 
+  const [myPlaylists, setMyPlaylists] = useState([])
+
+  const getMyPlaylists = () => {
+    let token = window.localStorage.getItem('token')
+    var authParam = {
+        method: 'GET', 
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/x-www-form-urelencoded"
+        },
+    }
+    fetch('https://api.spotify.com/v1/me/playlists', authParam)
+        .then(response => response.json())
+        .then(result => { 
+            setMyPlaylists(result.items)
+        })
+        .catch(error => console.log(error))
+  }
+  
 
   function createNewPlaylist(title, description) {
     setPlaylistTitle(title)
@@ -175,6 +190,7 @@ const [creator, setCreator] = useState('')
           .then(result => { 
               console.log(result)
               console.log(result.id)
+              getMyPlaylists()
           })
           .catch(error => console.log(error))
     }
@@ -211,6 +227,8 @@ const [creator, setCreator] = useState('')
             })
             .then(result => { 
                 console.log(result)
+                getMyPlaylists()
+
                 
             })
             .catch(error => console.log(error))
@@ -233,14 +251,14 @@ const [creator, setCreator] = useState('')
           })
       .then(result => { 
           console.log(result)
+          getMyPlaylists()
+
       })
       .catch(error => console.log(error))
   }
   
   DeleteData(`https://api.spotify.com/v1/playlists/${playlistID}/followers`)
   setDisplay(<p>Successfully Deleted Playlist</p>)
-
-
   }
 
   function choosePlaylist (id, uri) {
@@ -261,6 +279,8 @@ const [creator, setCreator] = useState('')
             })
             .then(result => { 
                 console.log(result)
+                getMyPlaylists()
+
                 
             })
             .catch(error => console.log(error))

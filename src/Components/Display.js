@@ -58,6 +58,7 @@ if (props.isLogged===true) {
                     playlistTitle={props.playlistTitle}
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
+                    myPlaylists={props.myPlaylists}
                     
                 />
                 <Browse 
@@ -76,6 +77,7 @@ if (props.isLogged===true) {
                     playlistTitle={props.playlistTitle}
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
+                    myPlaylists={props.myPlaylists}
                 />
             </div>
         </div>
