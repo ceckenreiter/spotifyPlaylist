@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import '../css/EditPlaylist.css'
-import SaveToSpotifyButton from "../buttons/SaveToSpotifyButton";
 import ViewButton from "../buttons/ViewButton";
 import DeletePlaylist from "../buttons/DeletePlaylistButton";
 
@@ -8,6 +7,7 @@ import DeletePlaylist from "../buttons/DeletePlaylistButton";
 function EditPlaylistView (props, itemID, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription) {
 
     const [view, setView] = useState(<div>No Songs Yet Add Some Songs</div>)
+    console.log(props.playlistTitle)
     
     if (props.thisList==='') {
         setView(
@@ -34,13 +34,12 @@ function EditPlaylistView (props, itemID, profileInfo, setCreator, creator, this
 
     const handleTitleChange = (e) => {
         e.preventDefault()
-        props.setPlaylistTitle(e.target.value)
+       
     }
 
     const handleDescriptionChange = (e) => {
         e.preventDefault()
-        props.setPlaylistDescription(e.target.value)
-
+       
     }
 
     return (
@@ -59,7 +58,6 @@ function EditPlaylistView (props, itemID, profileInfo, setCreator, creator, this
             <div>{view}</div>
             <DeletePlaylist />
 
-            <SaveToSpotifyButton itemID={props.itemID} playlistDescription={props.playlistDescription} playlistTitle={props.playlistTitle} />
             
         </div>
        

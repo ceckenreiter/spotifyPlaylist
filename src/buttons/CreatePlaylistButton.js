@@ -1,11 +1,10 @@
 import React from "react";
 import CreatePlaylist from "../Components/CreatePlaylist";
 
-function CreatePlaylistButton (props, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, setDisplay, username, profileInfo) {
+function CreatePlaylistButton (props, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, setDisplay, username, profileInfo, updatePlaylist) {
 
     const handleClick = (e) => {
         e.preventDefault()
-        
        props.setDisplay(
             <CreatePlaylist 
                 setDisplay={props.setDisplay} 
@@ -15,6 +14,7 @@ function CreatePlaylistButton (props, setPlaylistDescription, setPlaylistTitle, 
                 playlistTitle={props.playlistTitle}
                 setPlaylistDescription={props.setPlaylistDescription}
                 setPlaylistTitle={props.setPlaylistTitle}
+                updatePlaylist={props.updatePlaylist}
                 
             />)
     }

@@ -12,7 +12,16 @@ function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlay
         <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
             <p>Created By: {props.creator}</p>
-            <EditPlaylistButton itemID={props.itemID} profileInfo={props.profileInfo} playlistTitle={props.playlistTitle} creator={props.creator} thisList={props.thisList} setThisList={props.setThisList} setDisplay={props.setDisplay} setPlaylistDescription={props.setPlaylistDescription} setPlaylistTitle={props.setPlaylistTitle}/>
+            <EditPlaylistButton
+                itemID={props.itemID} 
+                profileInfo={props.profileInfo} 
+                playlistTitle={props.playlistTitle} 
+                creator={props.creator} 
+                thisList={props.thisList} 
+                setThisList={props.setThisList} 
+                setDisplay={props.setDisplay} 
+                setPlaylistDescription={props.setPlaylistDescription} 
+                setPlaylistTitle={props.setPlaylistTitle}/>
             <div className="list">
                 {props.thisList.map((item, index) => (
                     <div key={index}>
@@ -21,8 +30,7 @@ function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlay
                         <AddToPlaylistButton 
                             song={item.track.name}
                             artist={item.track.artists[0].name}
-                            creatingPlaylist={props.creatingPlaylist}
-                            setCreatingPlaylist={props.setCreatingPlaylist}/>
+                         />
                      </div>
                   
                 ))}

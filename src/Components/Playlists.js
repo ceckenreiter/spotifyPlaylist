@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import '../css/Tracklist.css';
-import CreatePlaylistButton from "../buttons/NewPlaylist";
+import CreatePlaylistButton from "../buttons/CreatePlaylistButton";
 import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription) {
+function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist) {
 
     const [myList, setMyList] = useState([])
+
 
     useEffect(() => {
         let token = window.localStorage.getItem('token')
@@ -69,6 +70,7 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                 playlistTitle={props.playlistTitle}
                 setPlaylistDescription={props.setPlaylistDescription}
                 setPlaylistTitle={props.setPlaylistTitle}
+                updatePlaylist={props.updatePlaylist}
               
             />
         </div>    

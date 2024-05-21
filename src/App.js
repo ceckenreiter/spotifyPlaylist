@@ -54,10 +54,16 @@ const [playlistDescription, setPlaylistDescription] = useState('')
 const [thisHREF, setThisHREF] = useState('')
 const [creator, setCreator] = useState('')
 
+    useEffect(() => {
+         console.log(playlistTitle, playlistDescription)
+
+ 
+    }, [playlistTitle, playlistDescription])
+
 
     useEffect(() => {        
         if (thisHREF !== '') {
-          const blankFunction = async() => {
+          const getPlaylist = async() => {
             let token = window.localStorage.getItem('token')
             var authParam = {
                 method: 'GET', 
@@ -92,7 +98,7 @@ const [creator, setCreator] = useState('')
           .catch(response => console.log(response))
         }
         
-        blankFunction()
+        getPlaylist()
               
         }
     }, [thisHREF, profileInfo])
@@ -100,6 +106,7 @@ const [creator, setCreator] = useState('')
 
 
     const [state, setState] = useState([])
+
     useEffect(() => {
         let token = window.localStorage.getItem('token')
         var authParam = {
@@ -117,6 +124,41 @@ const [creator, setCreator] = useState('')
         })
         .catch(error => console.log(error))
   }, [])
+
+
+  function updatePlaylist(title, description) {
+    setPlaylistTitle(title)
+    setPlaylistDescription(description)
+    console.log(title, description)
+
+    const newPlaylist = async(e) => {
+
+      let token = window.localStorage.getItem('token')
+
+      let data = {
+          'name': `${title}`,
+          'description': `${description}`,
+      }
+
+      const blank = await fetch(`https://api.spotify.com/v1/users/${profileInfo.display_name}/playlists`, {
+              method: 'POST', 
+              headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "application/x-www-form-urelencoded"
+              },
+              body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(result => { 
+              console.log(result)
+          })
+          .catch(error => console.log(error))
+  }
+
+    newPlaylist()
+
+  }
+
     
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
@@ -183,6 +225,7 @@ const [creator, setCreator] = useState('')
         playlistTitle={playlistTitle}
         setPlaylistDescription={setPlaylistDescription}
         setPlaylistTitle = {setPlaylistTitle}
+        updatePlaylist={updatePlaylist}
 
       />
      </div>

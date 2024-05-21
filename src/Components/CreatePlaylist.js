@@ -1,22 +1,39 @@
-import React from "react";
-import SavePlaylistButton from "../buttons/CreateToSpotify";
-import CreateToSpotify from "../buttons/CreateToSpotify";
+import React, {useState, useEffect} from "react";
+import AddToPlayListView from "./AddToPlaylist";
+import Playlists from "./Playlists";
 
-function CreatePlaylist (props, display, setDisplay, setProfileInfo, profileInfo, username, playlistTitle, playlistDescription, setPlaylistDescription, setPlaylistTitle) {
+function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, updatePlaylist) {
 
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
 
     const handleTitleChange = (e) => {
+    e.preventDefault()
+    setTitle(e.target.value)
+    
+   }
+
+
+   const handleDescriptionChange = (e) => {
+    e.preventDefault()
+    setDescription(e.target.value)
+}
+
+    const changePage = (e) => {
         e.preventDefault()
-        props.setPlaylistTitle(e.target.value)
-      
+        props.updatePlaylist(title, description)
+        props.setDisplay(
+        <AddToPlayListView 
+            profileInfo={props.profileInfo}
+            playlistTitle={props.playlistTitle}
+            playlistDescription={props.playlistDescription}
+        
+        />)
     }
 
-    const handleDescriptionChange = (e) => {
-        e.preventDefault()
-        props.setPlaylistDescription(e.target.value)
-     
 
-    }
+   
+
 
     return (
         <form>
@@ -25,13 +42,11 @@ function CreatePlaylist (props, display, setDisplay, setProfileInfo, profileInfo
             <input 
                 type='text'
                 onChange={handleTitleChange}
-                defaultValue={props.playlistTitle}
 
             />
             <h1>Description</h1>
             <input 
                 type='texttarea'
-                defaultValue={props.playlistDescription}
                 onChange={handleDescriptionChange}
             />
             <h1>Do you want this to be a public playlist?</h1>
@@ -45,14 +60,7 @@ function CreatePlaylist (props, display, setDisplay, setProfileInfo, profileInfo
                 <span class="slider round"></span>
             </label>
             <h1>Step 2: Save and Add Tracks </h1>
-            <CreateToSpotify 
-                setDisplay={props.setDisplay} 
-                playlistDescription={props.playlistDescription}
-                playlistTitle={props.playlistTitle}
-                setPlaylistDescription={props.setPlaylistDescription}
-                setPlaylistTitle={props.setPlaylistTitle}
-                username={props.username} 
-                profileInfo={props.profileInfo}/>
+            <button onClick={changePage}>Next</button>
         </form>
         
         
