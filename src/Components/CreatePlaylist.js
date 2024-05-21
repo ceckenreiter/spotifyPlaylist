@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from "react";
-import AddToPlayListView from "./AddToPlaylist";
-import Playlists from "./Playlists";
+import React, {useState} from "react";
 
-function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, updatePlaylist) {
+function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, playlistID, setPlaylistID, DupdatePlaylist) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -20,19 +18,8 @@ function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlist
 }
 
     const changePage = (e) => {
-        e.preventDefault()
         props.updatePlaylist(title, description)
-        props.setDisplay(
-        <AddToPlayListView 
-            profileInfo={props.profileInfo}
-            playlistTitle={props.playlistTitle}
-            playlistDescription={props.playlistDescription}
-        
-        />)
     }
-
-
-   
 
 
     return (

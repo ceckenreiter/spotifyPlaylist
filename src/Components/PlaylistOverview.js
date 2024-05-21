@@ -4,16 +4,15 @@ import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 
-function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator) {
-
-   
+function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, deletePlaylist, playlistID) {
     
     return (
         <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
             <p>Created By: {props.creator}</p>
+            <p>{props.playlistID}</p>
             <EditPlaylistButton
-                itemID={props.itemID} 
+                playlistID={props.playlistID} 
                 profileInfo={props.profileInfo} 
                 playlistTitle={props.playlistTitle} 
                 creator={props.creator} 
@@ -21,7 +20,11 @@ function PlaylistOverview (props, itemID, href, profileInfo, setDisplay, setPlay
                 setThisList={props.setThisList} 
                 setDisplay={props.setDisplay} 
                 setPlaylistDescription={props.setPlaylistDescription} 
-                setPlaylistTitle={props.setPlaylistTitle}/>
+                setPlaylistTitle={props.setPlaylistTitle}
+                deletePlaylist={props.deletePlaylist}
+                updatePlaylist={props.updatePlaylist}
+                
+                />
             <div className="list">
                 {props.thisList.map((item, index) => (
                     <div key={index}>

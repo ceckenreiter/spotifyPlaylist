@@ -6,6 +6,7 @@ import GreetingsPage from './Components/GreetingsPage';
 import NavigationBar from './Components/NavigationBar';
 import Display from './Components/Display';
 import PlaylistOverview from './Components/PlaylistOverview';
+import EditPlaylistView from './Components/EditPlaylistView';
 
 
 
@@ -16,6 +17,7 @@ function App() {
   const [trackList, setTrackList] = useState([]) // for ArtistOverview
   const [isLogged, setIsLogged] = useState(false) // for testing if logged on
   const [username, setUsername] = useState('')
+  
 
 
 
@@ -49,16 +51,12 @@ function App() {
 
 
 const [thisList, setThisList] = useState([])
+const [playlistID, setPlaylistID] = useState('')
 const [playlistTitle, setPlaylistTitle] = useState('')
 const [playlistDescription, setPlaylistDescription] = useState('')
 const [thisHREF, setThisHREF] = useState('')
 const [creator, setCreator] = useState('')
 
-    useEffect(() => {
-         console.log(playlistTitle, playlistDescription)
-
- 
-    }, [playlistTitle, playlistDescription])
 
 
     useEffect(() => {        
@@ -79,9 +77,13 @@ const [creator, setCreator] = useState('')
                 setPlaylistDescription(response.description)
                 setCreator(response.owner.display_name)
                 setThisList(response.tracks.items)
+                setPlaylistID(response.id)
                 setDisplay(
                   <PlaylistOverview 
-                    itemID={response.id}
+                    playlistID={response.id}
+                    setPlaylistID={setPlaylistID}
+                    deletePlaylist={deletePlaylist}
+                    updatePlaylist={updatePlaylist}
                     setDisplay={setDisplay}
                     thisList={response.tracks.items}
                     setThisList={setThisList}
@@ -131,7 +133,7 @@ const [creator, setCreator] = useState('')
     setPlaylistDescription(description)
     console.log(title, description)
 
-    const newPlaylist = async(e) => {
+    const newPlaylist = async() => {
 
       let token = window.localStorage.getItem('token')
 
@@ -151,11 +153,46 @@ const [creator, setCreator] = useState('')
           .then(response => response.json())
           .then(result => { 
               console.log(result)
+              console.log(result.id)
           })
           .catch(error => console.log(error))
   }
 
     newPlaylist()
+    setDisplay(
+      <EditPlaylistView 
+        playlistTitle={playlistTitle}
+        playlistDescription={playlistDescription}
+        creator={profileInfo.display_name}
+        updatePlaylist={updatePlaylist}
+        deletePlaylist={deletePlaylist}
+        playlistID={playlistID}
+        setPlaylistID={setPlaylistID}
+      
+      />)
+
+  }
+
+  function deletePlaylist (playlistID) {
+    const  DeleteData = async(url = '') => {
+      let token = window.localStorage.getItem('token')
+      console.log(playlistID)
+      const response = await fetch(url, 
+          {
+          method: "DELETE",
+          headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+              },
+          })
+      .then(result => { 
+          console.log(result)
+      })
+      .catch(error => console.log(error))
+  }
+  
+  DeleteData(`https://api.spotify.com/v1/playlists/${playlistID}/followers`)
+
 
   }
 
@@ -226,6 +263,9 @@ const [creator, setCreator] = useState('')
         setPlaylistDescription={setPlaylistDescription}
         setPlaylistTitle = {setPlaylistTitle}
         updatePlaylist={updatePlaylist}
+        deletePlaylist={deletePlaylist}
+        playlistID={playlistID}
+        setPlaylistID={setPlaylistID}
 
       />
      </div>

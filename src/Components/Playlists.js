@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist) {
+function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, deletePlaylist, setPlaylistID, playlistID) {
 
     const [myList, setMyList] = useState([])
 
@@ -53,6 +53,10 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                             playlistTitle={props.playlistTitle}
                             setPlaylistDescription={props.setPlaylistDescription}
                             setPlaylistTitle={props.setPlaylistTitle}
+                            updatePlaylist={props.updatePlaylist}
+                            deletePlaylist={props.deletePlaylist}
+                            setPlaylistID={props.setPlaylistID}
+                            playlistID={item.id}
                           
                         />
                     </div>
@@ -71,6 +75,9 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                 setPlaylistDescription={props.setPlaylistDescription}
                 setPlaylistTitle={props.setPlaylistTitle}
                 updatePlaylist={props.updatePlaylist}
+                deletePlaylist={props.deletePlaylist}
+                setPlaylistID={props.setPlaylistID}
+                playlistID={props.playlistID}
               
             />
         </div>    

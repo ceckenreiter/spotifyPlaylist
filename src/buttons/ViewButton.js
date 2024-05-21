@@ -3,7 +3,7 @@ import ArtistAlbumView from '../Components/ArtistAlbumView'
 import ListView from "../Components/ListView";
 
 
-function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle) {
+function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, updatePlaylist, deletePlaylist, setPlaylistID, playlistID) {
 
     const handleClick = (e) => {
 
@@ -22,7 +22,7 @@ function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList
             props.setDisplay( 
                 <ListView 
                     number={props.number} 
-                    id={props.id} 
+                    playlistID={props.id} 
                     href={props.href} 
                     display={props.display} 
                     setDisplay={props.setDisplay} 
@@ -41,6 +41,7 @@ function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList
                 />)
         } else if (props.number===3) {
             props.setThisHREF(props.href)
+
 
         }
     }
