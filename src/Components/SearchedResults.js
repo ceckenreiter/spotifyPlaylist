@@ -20,7 +20,7 @@ function SearchedResults (props, setDisplay, display, searchInput, setSearchResu
                                 <a href={item.uri}>
                                     <img src={item.images[0].url} alt='' height='150px' width='150px'></img>  
                                 </a>
-                                <ViewButton  display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} profileInfo={props.profileInfo}/>
+                                <ViewButton  display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} profileInfo={props.profileInfo} choosePlaylist={props.choosePlaylist} myPlaylists={props.myPlaylists}/>
                             </div>
                         ))}  
                 </div>

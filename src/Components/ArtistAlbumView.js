@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
-function ArtistAlbumView (props, value, creatingPlaylist, setCreatingPlaylist) {
+function ArtistAlbumView (props, value, setDisplay, choosePlaylist, myPlaylists) {
 
     const [album, setAlbum] = useState('')
     const [image, setImage] = useState('')
@@ -50,10 +50,12 @@ function ArtistAlbumView (props, value, creatingPlaylist, setCreatingPlaylist) {
                             <div key={index}>
                                 <p>{item.track_number}: {item.name}</p>
                                 <AddToPlaylistButton 
-                                song={item.name}
-                                artist={item.artists[0].name}
-                                creatingPlaylist={props.creatingPlaylist}
-                                setCreatingPlaylist={props.setCreatingPlaylist}/>
+                                setDisplay={props.setDisplay}
+                                myPlaylists={props.myPlaylists}
+                                songURI={item.uri}
+                                choosePlaylist={props.choosePlaylist}
+                                
+                                />
                             </div>
                         ))}  
             </div>

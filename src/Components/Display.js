@@ -79,6 +79,7 @@ if (props.isLogged===true) {
                     setPlaylistDescription={props.setPlaylistDescription}
                     setPlaylistTitle={props.setPlaylistTitle}
                     myPlaylists={props.myPlaylists}
+                    choosePlaylist={props.choosePlaylist}
                 />
             </div>
         </div>

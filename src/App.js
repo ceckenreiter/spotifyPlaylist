@@ -95,6 +95,8 @@ const [creator, setCreator] = useState('')
                     creator={response.owner.display_name}
                     profileInfo={profileInfo}
                     updatePlaylist={updatePlaylist}
+                    choosePlaylist={choosePlaylist}
+                    myPlaylists={myPlaylists}
                   />)
             })
           .catch(response => console.log(response))
@@ -287,7 +289,7 @@ const [creator, setCreator] = useState('')
     }
   
   choose()
-  setDisplay(<p>Added Song</p>)
+  window.alert('song added')
   }
     
 

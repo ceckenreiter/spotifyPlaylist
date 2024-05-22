@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import '../css/Browse.css'
 import ViewButton from '../buttons/ViewButton' 
 
-function Browse (props, thisHREF, thisList, setThisList, setThisHREF, state, setState, display, setDisplay, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle) {
+function Browse (props, thisHREF, thisList, setThisList, setThisHREF, state, setState, display, setDisplay, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, choosePlaylist) {
 
     
     return (
@@ -29,6 +29,7 @@ function Browse (props, thisHREF, thisList, setThisList, setThisHREF, state, set
                                     playlistTitle={props.playlistTitle}
                                     setPlaylistDescription={props.setPlaylistDescription}
                                     setPlaylistTitle={props.setPlaylistTitle}
+                                    choosePlaylist={props.choosePlaylist}
                                     />
                             </div>
                         ))}  

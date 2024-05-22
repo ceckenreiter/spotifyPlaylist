@@ -3,7 +3,7 @@ import ArtistAlbumView from '../Components/ArtistAlbumView'
 import ListView from "../Components/ListView";
 
 
-function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, updatePlaylist, deletePlaylist, setPlaylistID, playlistID) {
+function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, updatePlaylist, deletePlaylist, setPlaylistID, playlistID, choosePlaylist, myPlaylists) {
 
     const handleClick = (e) => {
 
@@ -12,9 +12,8 @@ function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList
             props.setDisplay(
                 <ArtistAlbumView 
                     value={props.id} 
-                    creatingPlaylist={props.creatingPlaylist} 
-                    setCreatingPlaylist={props.setCreatingPlaylist} 
-                    
+                    choosePlaylist={props.choosePlaylist}
+                    myPlaylists={props.myPlaylists}                    
                     profileInfo={props.profileInfo} 
                     setDisplay={props.setDisplay}
                 />)
@@ -37,6 +36,8 @@ function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList
                     thisHREF={props.thisHREF}
                     thisList={props.thisList}
                     setThisList={props.setThisList}
+                    choosePlaylist={props.choosePlaylist}
+                    myPlaylists={props.myPlaylists}
                     
                 />)
         } else if (props.number===3) {
