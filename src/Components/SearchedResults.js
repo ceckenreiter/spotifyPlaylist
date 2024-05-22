@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
 
-function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myPlaylists) {
+function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myPlaylists, choosePlaylist) {
 
     
    
@@ -38,8 +38,9 @@ function SearchedResults (props, setDisplay, display, searchInput, setSearchResu
                                     <p>{item.uri}</p>
                                 </button>
                                 <AddToPlaylistButton 
+                                    choosePlaylist={props.choosePlaylist}
                                     myPlaylists={props.myPlaylists}
-                                    URI={item.uri}
+                                    songURI={item.uri}
                                     setDisplay={props.setDisplay}
                                     profileInfo={props.profileInfo}/>
                             </div>

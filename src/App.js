@@ -262,22 +262,22 @@ const [creator, setCreator] = useState('')
   }
 
   function choosePlaylist (id, uri) {
+    const real=JSON.stringify(uri)
     const  choose = async() => {
       let token = window.localStorage.getItem('token')
       let data = {
-          "uris": [],
-          "position": 0
+          "uris": [`${uri}`],
         }
   
         await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
-                method: 'PUT', 
+                method: 'POST', 
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/x-www-form-urelencoded"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
             })
-            .then(result => { 
+        .then(result => { 
                 console.log(result)
                 getMyPlaylists()
 
@@ -286,7 +286,7 @@ const [creator, setCreator] = useState('')
             .catch(error => console.log(error))
     }
   
-  choose(``)
+  choose()
   setDisplay(<p>Added Song</p>)
   }
     
@@ -361,6 +361,7 @@ const [creator, setCreator] = useState('')
         playlistID={playlistID}
         setPlaylistID={setPlaylistID}
         myPlaylists={myPlaylists}
+        choosePlaylist={choosePlaylist}
        
       />
      </div>
