@@ -6,8 +6,12 @@ import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, createNewPlaylist, deletePlaylist, playlistID, choosePlaylist, myPlaylists, removeFromPlaylist) {
     
+    let blank = props.thisList
 
-    if (props.thisList === '') {
+    console.log(props.thisList)
+
+
+    if (blank.length<1) {
         return (
             <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
@@ -29,6 +33,7 @@ function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDesc
                 updatePlaylist={props.updatePlaylist}
                 removeFromPlaylist={props.removeFromPlaylist}
                 />  
+            <p>No Songs</p>
             </div>
         )
     }
