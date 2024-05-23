@@ -1,19 +1,16 @@
 import React from "react";
 
-function RemoveFromPlaylistButton (props, creatingPlaylist, setCreatingPlaylist) {
-   
-    const handleClick = (e) => {
-        e.preventDefault();
-        
-        props.setCreatingPlaylist(
-            props.creatingPlaylist.filter(songs =>
-              songs.song !== props.song
-            ))
-        console.log(props.creatingPlaylist)
+function RemoveFromPlaylistButton (props, songURI, playlistID, removeFromPlaylist, setDisplay) {
+    const handleClick = () => {
+        console.log(props.songURI)
+        console.log(props.playlistID)
+        props.removeFromPlaylist(props.playlistID, props.songURI)
 
     }
+   
+   
     return (
-        <button onClick={handleClick} >-</button>
+        <button onClick = {handleClick}>-</button>
     )
 
 } 

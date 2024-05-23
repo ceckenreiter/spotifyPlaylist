@@ -97,6 +97,7 @@ const [creator, setCreator] = useState('')
                     updatePlaylist={updatePlaylist}
                     choosePlaylist={choosePlaylist}
                     myPlaylists={myPlaylists}
+                    removeFromPlaylist={removeFromPlaylist}
                   />)
             })
           .catch(response => console.log(response))
@@ -192,6 +193,7 @@ const [creator, setCreator] = useState('')
           .then(result => { 
               console.log(result)
               console.log(result.id)
+              setThisList([])
               getMyPlaylists()
           })
           .catch(error => console.log(error))
@@ -199,7 +201,7 @@ const [creator, setCreator] = useState('')
     newPlaylist()
     setDisplay(
       <EditPlaylistView 
-        thisList={thisList}
+        thisList={[]}
         playlistTitle={title}
         playlistDescription={description}
         creator={profileInfo.display_name}
@@ -264,7 +266,6 @@ const [creator, setCreator] = useState('')
   }
 
   function choosePlaylist (id, uri) {
-    const real=JSON.stringify(uri)
     const  choose = async() => {
       let token = window.localStorage.getItem('token')
       let data = {
@@ -291,6 +292,73 @@ const [creator, setCreator] = useState('')
   choose()
   window.alert('song added')
   }
+
+  function removeFromPlaylist (id, uri) {
+
+    const  remove = async() => {
+      let token = window.localStorage.getItem('token')
+      let data = {
+          "tracks": [{'uri': `${uri}`}],
+        }
+        await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+                method: 'DELETE', 
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/x-www-form-urelencoded"
+                },
+                body: JSON.stringify(data),
+            })
+        .then(result => { 
+                console.log(result)
+                getMyPlaylists()
+            })
+            .catch(error => console.log(error))
+        
+        await fetch(`https://api.spotify.com/v1/playlists/${id}/tracks`, {
+          method: 'GET', 
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/x-www-form-urelencoded"
+          }
+        })
+        .then(result => result.json())
+        .then(result => { 
+            console.log(result)
+            setThisList(result.items)
+            const Title=playlistTitle
+            const description=playlistDescription
+            setDisplay(
+              <PlaylistOverview
+                    playlistID={playlistID}
+                    setPlaylistID={setPlaylistID}
+                    deletePlaylist={deletePlaylist}
+                    createNewPlaylist={createNewPlaylist}
+                    setDisplay={setDisplay}
+                    thisList={result.items}
+                    setThisList={setThisList}
+                    playlistTitle={Title}
+                    playlistDescription={description}
+                    setPlaylistTitle={setPlaylistTitle}
+                    setPlaylistDescription={setPlaylistDescription}
+                    thisHREF={thisHREF}
+                    setCreator={setCreator}
+                    creator={profileInfo.display_name}
+                    profileInfo={profileInfo}
+                    updatePlaylist={updatePlaylist}
+                    choosePlaylist={choosePlaylist}
+                    myPlaylists={myPlaylists}
+                    removeFromPlaylist={removeFromPlaylist}
+              />
+            )
+          })
+          .catch(error => console.log(error))
+        
+    }
+  
+  remove()
+  window.alert('song removed')
+  }
+
     
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
@@ -364,6 +432,7 @@ const [creator, setCreator] = useState('')
         setPlaylistID={setPlaylistID}
         myPlaylists={myPlaylists}
         choosePlaylist={choosePlaylist}
+        removeFromPlaylist={removeFromPlaylist}
        
       />
      </div>

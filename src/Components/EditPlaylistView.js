@@ -1,35 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../css/EditPlaylist.css'
-import ViewButton from "../buttons/ViewButton";
 import DeletePlaylist from "../buttons/DeletePlaylistButton";
+import RemoveFromPlaylistButton from "../buttons/RemoveFromPlaylistButton";
 
 
-function EditPlaylistView (props, itemID, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, createNewPlaylist, setPlaylistID, playlistID, updatePlaylist) {
+function EditPlaylistView (props, setDisplay, itemID, profileInfo, setCreator, creator, thisList, setThisList, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, createNewPlaylist, setPlaylistID, playlistID, updatePlaylist, removeFromPlaylist) {
 
     const [view, setView] = useState(<div>No Songs Yet Add Some Songs</div>)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-
     
-    if (props.thisList.length>0) {
+    useEffect(() => {
         setView(
             <div>
                 {props.thisList.map((item, index) => (
                     <div key={index}>
-                        <p>{item.name}</p>
-                        <ViewButton 
-                            thisList={props.thisList}
-                            setThisList={props.setThisList}
-                            setDisplay={props.setDisplay} 
-                            display={props.display} 
-                            href={item.href} 
-                            number={3} 
-                            setClickedSong={props.setClickedSong}/>
+                        <p>{item.track.name}</p>
+                        <p>{item.track.artists[0].name}</p>
+                        <RemoveFromPlaylistButton 
+                            removeFromPlaylist={props.removeFromPlaylist}
+                            playlistID={props.playlistID}
+                            songURI={item.track.uri}
+                            setDisplay={props.setDisplay}
+                        />
                     </div>
                 ))}
             </div>
         )
-    }
+  }, [props.thisList])
+
+
 
 
     const handleTitleChange = (e) => {

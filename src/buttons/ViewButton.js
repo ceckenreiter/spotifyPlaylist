@@ -3,7 +3,7 @@ import ArtistAlbumView from '../Components/ArtistAlbumView'
 import ListView from "../Components/ListView";
 
 
-function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, updatePlaylist, deletePlaylist, setPlaylistID, playlistID, choosePlaylist, myPlaylists) {
+function ViewButton (props, itemID, thisHREF, setThisHREF, thisList, setThisList,  title, display, setDisplay, number, id, href, creatingPlaylist, setCreatingPlaylist, profileInfo, playlistDescription, playlistTitle, setPlaylistDescription, setPlaylistTitle, updatePlaylist, deletePlaylist, setPlaylistID, playlistID, choosePlaylist, myPlaylists, removeFromPlaylist) {
 
     const handleClick = (e) => {
 

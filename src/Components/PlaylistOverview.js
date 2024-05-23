@@ -4,8 +4,35 @@ import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 import EditPlaylistButton from "../buttons/EditPlaylistButton";
 
 
-function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, createNewPlaylist, deletePlaylist, playlistID, choosePlaylist, myPlaylists) {
+function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDescription, setPlaylistTitle, playlistDescription, playlistTitle, thisList, setThisList, thisHREF, setThisHREF, creator, setCreator, updatePlaylist, createNewPlaylist, deletePlaylist, playlistID, choosePlaylist, myPlaylists, removeFromPlaylist) {
     
+
+    if (props.thisList === '') {
+        return (
+            <div id='PlaylistOverview'>
+            <h1>{props.playlistTitle}</h1>
+            <p>Created By: {props.creator}</p>
+            <p>{props.playlistDescription}</p>
+            <EditPlaylistButton
+                playlistID={props.playlistID} 
+                profileInfo={props.profileInfo} 
+                playlistTitle={props.playlistTitle} 
+                playlistDescription={props.playlistDescription}
+                creator={props.creator} 
+                thisList={props.thisList} 
+                setThisList={props.setThisList} 
+                setDisplay={props.setDisplay} 
+                setPlaylistDescription={props.setPlaylistDescription} 
+                setPlaylistTitle={props.setPlaylistTitle}
+                deletePlaylist={props.deletePlaylist}
+                createNewPlaylist={props.createNewPlaylist}
+                updatePlaylist={props.updatePlaylist}
+                removeFromPlaylist={props.removeFromPlaylist}
+                />  
+            </div>
+        )
+    }
+
     return (
         <div id='PlaylistOverview'>
             <h1>{props.playlistTitle}</h1>
@@ -25,8 +52,9 @@ function PlaylistOverview (props, href, profileInfo, setDisplay, setPlaylistDesc
                 deletePlaylist={props.deletePlaylist}
                 createNewPlaylist={props.createNewPlaylist}
                 updatePlaylist={props.updatePlaylist}
+                removeFromPlaylist={props.removeFromPlaylist}
                 
-                />
+                />  
             <div className="list">
                 {props.thisList.map((item, index) => (
                     <div key={index}>

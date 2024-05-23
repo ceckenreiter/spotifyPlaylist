@@ -4,7 +4,7 @@ import ChangingBody from "./ChangingBody";
 import Browse from "./Browse";
 
 
-function Display (props, state, setState, thisHREF, setThisHREF, creator, setCreator, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, createNewPlaylist, playlistID, deletePlaylist, setPlaylistID, updatePlaylist, myPlaylists, choosePlaylist) {
+function Display (props, state, setState, thisHREF, setThisHREF, creator, setCreator, thisList, setThisList, isLogged, searchInput, display, setSearchInput, setDisplay, setSearchResults, setAlbumList, albumList, trackList, setTrackList, setProfileInfo, profileInfo, username, setUsername, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, createNewPlaylist, playlistID, deletePlaylist, setPlaylistID, updatePlaylist, myPlaylists, choosePlaylist, removeFromPlaylist) {
 
 
 if (props.isLogged===true) {
@@ -34,6 +34,7 @@ if (props.isLogged===true) {
                 setPlaylistID={props.setPlaylistID}  
                 updatePlaylist={props.updatePlaylist} 
                 myPlaylists={props.myPlaylists}
+                removeFromPlaylist={props.removeFromPlaylist}
                  />
             </div>
             <div className='right'>

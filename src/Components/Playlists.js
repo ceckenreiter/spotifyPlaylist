@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, createNewPlaylist, deletePlaylist, setPlaylistID, playlistID, myPlaylists) {
+function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, profileInfo, setProfileInfo, setDisplay, username, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, updatePlaylist, createNewPlaylist, deletePlaylist, setPlaylistID, playlistID, myPlaylists, removeFromPlaylist) {
 
 
     return (
@@ -34,7 +34,7 @@ function Playlists(props, thisList, setThisList,thisHREF, setThisHREF, display, 
                             deletePlaylist={props.deletePlaylist}
                             setPlaylistID={props.setPlaylistID}
                             playlistID={item.id}
-                          
+                            removeFromPlaylist={props.removeFromPlaylist}
                         />
                     </div>
                 ))}
