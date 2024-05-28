@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 
 function ProfileInformation (props, ID, SECRET, profileInfo, setProfileInfo, username, setUsername) {
     
