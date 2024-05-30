@@ -29,7 +29,12 @@ function App() {
   const [state, setState] = useState([])
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
-  const CLIENT_SECRET = "16d3b53ef9804a7387b3fdbe6e11293f"
+
+  const random = () => {
+    console.log(creator)
+    console.log(thisList)
+    console.log(searchResults)
+  }
 
   useEffect(() => {
     let token = window.localStorage.getItem('token')
@@ -123,6 +128,7 @@ function App() {
       .then(response => response.json())
       .then(result => { 
         setMyPlaylists(result.items)
+        random()
       })
       .catch(error => console.log(error))
   }, [])

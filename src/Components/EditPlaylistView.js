@@ -26,7 +26,7 @@ function EditPlaylistView (props, thisList, updatePlaylist, playlistTitle, playl
                 ))}
             </div>
         )
-  }, [props.thisList])
+  }, [props.thisList, props.removeFromPlaylist, props.playlistID])
 
 
 
