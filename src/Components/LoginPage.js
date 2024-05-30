@@ -2,7 +2,7 @@ import React from "react"
 import LinkToSpotifyButton from "../buttons/LinkToSpotifyButton"
 import "../css/AddToPlayListButton.css"
 
-function LoginPage (props, ID, profileInfo, setProfileInfo, isLogged, setIsLogged) {
+function LoginPage (props, ID, setProfileInfo, setIsLogged) {
 
 
     return (
@@ -11,9 +11,7 @@ function LoginPage (props, ID, profileInfo, setProfileInfo, isLogged, setIsLogge
             <div className="button">
                 <LinkToSpotifyButton 
                     ID={props.ID}
-                    profileInfo={props.profileInfo}
                     setProfileInfo={props.setProfileInfo}
-                    isLogged={props.isLogged}
                     setIsLogged={props.setIsLogged}
 
                  />

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import ViewButton from "../buttons/ViewButton"
 
-function ListView (props, thisHREF, thisList, setThisList, setThisHREF, id, href, number, setDisplay, display, creatingPlaylist, setCreatingPlaylist, clickedSong, setClickedSong, profileInfo, setPlaylistDescription, setPlaylistTitle, playlistTitle, playlistDescription, choosePlaylist) {
+function ListView (props, setThisHREF, href) {
     
     const [thisPlaylist, setThisPlaylist]= useState([])
     const [theme, setTheme] = useState('')
@@ -40,23 +40,9 @@ function ListView (props, thisHREF, thisList, setThisList, setThisHREF, id, href
                             <p>{item.tracks.total}</p>
                             <p>{item.href}</p>
                             <ViewButton 
-                                setDisplay={props.setDisplay} 
-                                display={props.display} 
                                 href={item.href} 
-                                thisList={props.thisList}
-                                setThisList={props.setThisList}
-                                thisHREF={props.thisHREF}
                                 setThisHREF={props.setThisHREF}
-                                title={item.name}
                                 number={3} 
-                                creatingPlaylist={props.creatingPlaylist} 
-                                setCreatingPlaylist={props.setCreatingPlaylist} 
-                                profileInfo={props.profileInfo}
-                                playlistDescription={props.playlistDescription}
-                                playlistTitle={props.playlistTitle}
-                                setPlaylistDescription={props.setPlaylistDescription}
-                                setPlaylistTitle={props.setPlaylistTitle}
-                                choosePlaylist={props.choosePlaylist}
                                 />
                         </div>
                     ))}  

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function CreatePlaylist (props, profileInfo, setDisplay, playlistTitle, playlistDescription, setPlaylistTitle, setPlaylistDescription, deletePlaylist, playlistID, setPlaylistID, createNewPlaylist) {
+function CreatePlaylist (props, createNewPlaylist) {
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')

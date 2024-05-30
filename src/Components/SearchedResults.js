@@ -5,9 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 import AddToPlaylistButton from "../buttons/AddToPlaylistButton";
 
 
-function SearchedResults (props, setDisplay, display, searchInput, setSearchResults, searchResults, albumList, setAlbumList, trackList, setTrackList, creatingPlaylist, setCreatingPlaylist, profileInfo, myPlaylists, choosePlaylist) {
-
-    
+function SearchedResults (props, setDisplay, searchInput, albumList, trackList, myPlaylists, choosePlaylist) {
    
     return (
         <div id='SearchedResults'>
@@ -20,7 +18,12 @@ function SearchedResults (props, setDisplay, display, searchInput, setSearchResu
                                 <a href={item.uri}>
                                     <img src={item.images[0].url} alt='' height='150px' width='150px'></img>  
                                 </a>
-                                <ViewButton  display={props.display} setDisplay={props.setDisplay} number={1} id={item.id} creatingPlaylist={props.creatingPlaylist} setCreatingPlaylist={props.setCreatingPlaylist} profileInfo={props.profileInfo} choosePlaylist={props.choosePlaylist} myPlaylists={props.myPlaylists}/>
+                                <ViewButton  
+                                    setDisplay={props.setDisplay} 
+                                    number={1} 
+                                    id={item.id} 
+                                    choosePlaylist={props.choosePlaylist} 
+                                    myPlaylists={props.myPlaylists}/>
                             </div>
                         ))}  
                 </div>
@@ -42,7 +45,7 @@ function SearchedResults (props, setDisplay, display, searchInput, setSearchResu
                                     myPlaylists={props.myPlaylists}
                                     songURI={item.uri}
                                     setDisplay={props.setDisplay}
-                                    profileInfo={props.profileInfo}/>
+                                />
                             </div>
                         ))}  
                 </div>

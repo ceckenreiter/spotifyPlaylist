@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-function LinkToSpotifyButton (props, profileInfo, setProfileInfo, ID, isLogged, setIsLogged) {
+function LinkToSpotifyButton (props, setProfileInfo, ID, setIsLogged) {
 
 const CLIENT_ID = props.ID
 

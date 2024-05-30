@@ -2,7 +2,7 @@ import React from "react";
 import '../css/NavigationBar.css'
 
 
-function NavigationBar (props, isLogged, setIsLogged, profileInfo, setProfileInfo) {
+function NavigationBar (props, isLogged, profileInfo) {
     
         return(
             <nav>

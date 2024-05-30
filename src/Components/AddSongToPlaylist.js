@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddSongToPlaylist (props, songURI, playlistID, choosePlaylist, name ) {
+function AddSongToPlaylist (props, songURI, playlistID, choosePlaylist ) {
     const handleClick = (e) => {
         console.log(props.songURI, props.playlistID)
         props.choosePlaylist(props.playlistID, props.songURI)
@@ -8,7 +8,7 @@ function AddSongToPlaylist (props, songURI, playlistID, choosePlaylist, name ) {
       };
     return (
         <div>
-            <button onClick={handleClick}>{props.name}</button>
+            <button onClick={handleClick}>+</button>
         </div>
     )
 

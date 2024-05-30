@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 
-function ProfileInformation (props, ID, SECRET, profileInfo, setProfileInfo, username, setUsername) {
+function ProfileInformation (props, setProfileInfo) {
     
     useEffect(() => {
         const token = window.localStorage.getItem('token')

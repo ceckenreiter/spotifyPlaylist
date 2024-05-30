@@ -17,7 +17,6 @@ function AddToPlaylistButton (props, choosePlaylist, myPlaylists, songURI, setDi
                             <p>{item.id}</p>
                             <AddSongToPlaylist 
                                 choosePlaylist={props.choosePlaylist} 
-                                setDisplay={props.setDisplay} 
                                 songURI={props.songURI} 
                                 playlistID={item.id}
                                 />

@@ -16,7 +16,6 @@ function App() {
   const [profileInfo, setProfileInfo] = useState([]) // saves profile info of user
   const [trackList, setTrackList] = useState([]) // for ArtistOverview
   const [isLogged, setIsLogged] = useState(false) // for testing if logged on
-  const [username, setUsername] = useState('')
   const [searchInput, setSearchInput] = useState(""); // for search field
   const [albumList, setAlbumList] = useState([]) // for artistOverview
   const [searchResults, setSearchResults] = useState('');  //saves the returned results of search
@@ -75,21 +74,13 @@ function App() {
           setDisplay(
             <PlaylistOverview 
               playlistID={response.id}
-              setPlaylistID={setPlaylistID}
               deletePlaylist={deletePlaylist}
-              createNewPlaylist={createNewPlaylist}
               setDisplay={setDisplay}
               thisList={response.tracks.items}
-              setThisList={setThisList}
               playlistTitle={response.name}
               playlistDescription={response.description}
-              setPlaylistTitle={setPlaylistTitle}
-              setPlaylistDescription={setPlaylistDescription}
-              thisHREF={thisHREF}
-              setCreator={setCreator}
               creator={response.owner.display_name}
               profileInfo={profileInfo}
-              updatePlaylist={updatePlaylist}
               choosePlaylist={choosePlaylist}
               myPlaylists={myPlaylists}
               removeFromPlaylist={removeFromPlaylist}
@@ -207,6 +198,9 @@ function App() {
         body: JSON.stringify(data)
       })
       .then(result => { 
+        console.log(result)
+        console.log(playlistTitle)
+        console.log(title)
         getMyPlaylists()
       })
       .catch(error => console.log(error))
@@ -290,21 +284,14 @@ function App() {
         setDisplay(
           <PlaylistOverview
             playlistID={playlistID}
-            setPlaylistID={setPlaylistID}
             deletePlaylist={deletePlaylist}
             createNewPlaylist={createNewPlaylist}
             setDisplay={setDisplay}
             thisList={result.items}
-            setThisList={setThisList}
             playlistTitle={Title}
             playlistDescription={description}
-            setPlaylistTitle={setPlaylistTitle}
-            setPlaylistDescription={setPlaylistDescription}
-            thisHREF={thisHREF}
-            setCreator={setCreator}
             creator={profileInfo.display_name}
             profileInfo={profileInfo}
-            updatePlaylist={updatePlaylist}
             choosePlaylist={choosePlaylist}
             myPlaylists={myPlaylists}
             removeFromPlaylist={removeFromPlaylist}
@@ -321,73 +308,33 @@ function App() {
     <div id='App'>
       <NavigationBar 
         isLogged={isLogged}
-        setIsLogged={setIsLogged}
         profileInfo={profileInfo}
-        setProfileInfo={setProfileInfo}
-        username={username}
-        setUsername={setUsername}
       />
-
       <GreetingsPage />
-
       <LoginPage 
         ID={CLIENT_ID}
-        profileInfo={profileInfo}
         setProfileInfo={setProfileInfo}
-        isLogged={isLogged}
         setIsLogged={setIsLogged}
-        username={username}
-        setUsername={setUsername} 
       />
-      
       <ProfileInformation 
-        ID={CLIENT_ID}
-        SECRET={CLIENT_SECRET}
-        profileInfo={profileInfo}
         setProfileInfo={setProfileInfo}
-        username={username}
-        setUsername={setUsername}
       />
-
       <Display 
         isLogged={isLogged}
         state={state}
-        setState={setState}
         searchInput={searchInput}
         display={display}
         setSearchInput={setSearchInput}
         setDisplay={setDisplay}
-        searchResults={searchResults}
-        setSearchResults={setSearchResults}
-        setAlbumList={setAlbumList}
         albumList={albumList}
         trackList = {trackList}
-        setTrackList = {setTrackList}
-        creator={creator}
-        setCreator={setCreator}
-        thisList={thisList}
-        setThisList={setThisList}
-        thisHREF={thisHREF}
         setThisHREF={setThisHREF}
-        setProfileInfo={setProfileInfo}
-        profileInfo={profileInfo}
-        username={username}
-        setUsername={setUsername}
-        playlistDescription={playlistDescription}
-        playlistTitle={playlistTitle}
-        setPlaylistDescription={setPlaylistDescription}
-        setPlaylistTitle = {setPlaylistTitle}
         createNewPlaylist={createNewPlaylist}
         updatePlaylist={updatePlaylist}
-        deletePlaylist={deletePlaylist}
-        playlistID={playlistID}
-        setPlaylistID={setPlaylistID}
         myPlaylists={myPlaylists}
         choosePlaylist={choosePlaylist}
-        removeFromPlaylist={removeFromPlaylist}
-       
       />
-     </div>
+    </div>
   );
 }; 
 
