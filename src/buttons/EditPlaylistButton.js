@@ -1,7 +1,7 @@
 import React from "react";
 import EditPlaylistView from "../Components/EditPlaylistView";
 
-function EditPlaylistButton (props, thisList, creator, playlistTitle, playlistDescription,  setDisplay, profileInfo, deletePlaylist, playlistID, removeFromPlaylist) {
+function EditPlaylistButton (props, thisList, updatePlaylist, creator, playlistTitle, playlistDescription,  setDisplay, profileInfo, deletePlaylist, playlistID, removeFromPlaylist) {
 
 
 
@@ -14,6 +14,7 @@ function EditPlaylistButton (props, thisList, creator, playlistTitle, playlistDe
                     playlistDescription={props.playlistDescription}  
                     thisList={props.thisList} 
                     deletePlaylist={props.deletePlaylist} 
+                    updatePlaylist={props.updatePlaylist}
                     playlistID={props.playlistID} 
                     removeFromPlaylist={props.removeFromPlaylist}/>)
         }   else {

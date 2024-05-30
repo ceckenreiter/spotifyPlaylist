@@ -4,7 +4,7 @@ import DeletePlaylist from "../buttons/DeletePlaylistButton";
 import RemoveFromPlaylistButton from "../buttons/RemoveFromPlaylistButton";
 
 
-function EditPlaylistView (props, thisList, playlistTitle, playlistDescription, deletePlaylist, playlistID, removeFromPlaylist) {
+function EditPlaylistView (props, thisList, updatePlaylist, playlistTitle, playlistDescription, deletePlaylist, playlistID, removeFromPlaylist) {
 
     const [view, setView] = useState(<div>No Songs Yet Add Some Songs</div>)
     const [title, setTitle] = useState('')
@@ -61,7 +61,6 @@ function EditPlaylistView (props, thisList, playlistTitle, playlistDescription, 
                 <div className="options">
                     
                 </div>
-                <p>Created By: {props.creator}</p>
             </form>
             <div>{view}</div>
             <button onClick={changePage}>Save</button>

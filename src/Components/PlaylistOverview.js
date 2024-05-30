@@ -5,7 +5,7 @@ import EditPlaylistButton from "../buttons/EditPlaylistButton";
 import AddToPlaylist from "../Components/AddToPlaylist"; 
 
 
-function PlaylistOverview (props, profileInfo, setDisplay, playlistDescription, playlistTitle, thisList, creator, deletePlaylist, playlistID, choosePlaylist, myPlaylists, removeFromPlaylist) {
+function PlaylistOverview (props, profileInfo, updatePlaylist, setDisplay, playlistDescription, playlistTitle, thisList, creator, deletePlaylist, playlistID, choosePlaylist, myPlaylists, removeFromPlaylist) {
     
     let blank = props.thisList
 
@@ -25,6 +25,7 @@ function PlaylistOverview (props, profileInfo, setDisplay, playlistDescription, 
                 setDisplay={props.setDisplay} 
                 deletePlaylist={props.deletePlaylist}
                 removeFromPlaylist={props.removeFromPlaylist}
+                updatePlaylist={props.updatePlaylist}
                 />  
             <p>No Songs</p>
             <AddToPlaylist 
@@ -50,6 +51,7 @@ function PlaylistOverview (props, profileInfo, setDisplay, playlistDescription, 
                 setDisplay={props.setDisplay} 
                 deletePlaylist={props.deletePlaylist}
                 removeFromPlaylist={props.removeFromPlaylist}
+                updatePlaylist={props.updatePlaylist}
                 
                 />  
             <div className="list">

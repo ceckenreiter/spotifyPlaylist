@@ -3,4 +3,4 @@ Notes on things I need to fix:
 2. have a previous button to be able to view previous screen -- response after adding song
 3. have buttons be responsive to where the page should be directing its attention -- CSS?
 4. Delete song changes playlist title
-5. fix editplaylist title and description button -- i think i have to go through the process twice does not cause re-render of playlists etc/ 
+5. edit playlist title takes a few minutes to load correctly

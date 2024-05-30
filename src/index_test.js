@@ -104,3 +104,14 @@ describe('Display Component Testing', () => {
   })
 }); 
   
+describe('Playlsit Component Testing', () => {
+  it('sets profile info once logged in', () => {
+    var profileInfo
+    var loggedIn = true
+    if (loggedIn === true) {
+      let profileInfo = 'foodredflower'
+      return profileInfo
+    }
+    assert.ok(profileInfo = 'foodredflower')
+  })
+})

@@ -74,6 +74,7 @@ function App() {
           setDisplay(
             <PlaylistOverview 
               playlistID={response.id}
+              updatePlaylist={updatePlaylist}
               deletePlaylist={deletePlaylist}
               setDisplay={setDisplay}
               thisList={response.tracks.items}
@@ -198,15 +199,12 @@ function App() {
         body: JSON.stringify(data)
       })
       .then(result => { 
-        console.log(result)
-        console.log(playlistTitle)
-        console.log(title)
         getMyPlaylists()
       })
       .catch(error => console.log(error))
     }
     update(`https://api.spotify.com/v1/playlists/${playlistID}/followers`)
-    setDisplay(<p>Successfully Updated Playlist</p>)
+    setDisplay(<p>Successfully Updated Playlist Please allow a few miutes to see changes</p>)
   }
 
   function deletePlaylist (playlistID) {
@@ -294,6 +292,7 @@ function App() {
             profileInfo={profileInfo}
             choosePlaylist={choosePlaylist}
             myPlaylists={myPlaylists}
+            updatePlaylist={updatePlaylist}
             removeFromPlaylist={removeFromPlaylist}
           />
         )

@@ -5,12 +5,7 @@ function AddToPlayListView (props, playlistTitle, playlistDescription, profileIn
     const handleSave = async(e) => {
         e.preventDefault()
 
-        
-
     }
-
-
-
 
     return (
         <div>
