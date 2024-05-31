@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
-function LinkToSpotifyButton (props, setProfileInfo, ID, setIsLogged) {
+function LinkToSpotifyButton (props, token, setToken, setProfileInfo, ID, setIsLogged) {
 
 const CLIENT_ID = props.ID
 
@@ -10,24 +10,8 @@ const RESPONSE_TYPE ='token'
 
 const scope = 'playlist-modify-public playlist-modify-private'
 
-const [token, setToken] = useState('')
-
-
-    useEffect(() => {
-        const hash = window.location.hash
-        let token = (window.localStorage.getItem("token"))
-
-        if (!token && hash) { //checks if we get a access token//
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-            window.location.hash=""
-            window.localStorage.setItem('token', token) 
-            props.setIsLogged(true) 
-        }
-        setToken(token) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
-    }, [])
-
     const logout = () => {
-        setToken("")
+        props.setToken("")
         props.setProfileInfo("")
         window.localStorage.removeItem("token")
         props.setIsLogged(false)
@@ -36,7 +20,7 @@ const [token, setToken] = useState('')
 
     return (
         <div>
-            {!token ?
+            {!props.token ?
             <a href={`${AUTHOR_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${scope}`}>
             <button>Link To Spotify</button>
             </a>

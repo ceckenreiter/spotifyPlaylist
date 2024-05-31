@@ -29,11 +29,25 @@ function App() {
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
 
-  
+
+  const [token, setToken] = useState('')
+
+
+  useEffect(() => {
+      const hash = window.location.hash
+      let value = window.localStorage.getItem('token')
+
+      if (!value && hash) { //checks if we get a access token//
+          var blank = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+          window.location.hash=""
+          window.localStorage.setItem('token', blank) 
+          setIsLogged(true) 
+      }
+      setToken(window.localStorage.getItem("token")) //if so we extract the token part and set our token -- must be after if statement otherwise token is never set
+  }, [])
 
   useEffect(() => {
     const token = window.localStorage.getItem('token')
-
 
     var authParams = {
         method: 'GET', 
@@ -43,13 +57,14 @@ function App() {
         },
         scopes: 'user-read-private user-read-email'
     }
-
-    fetch('https://api.spotify.com/v1/me', authParams)
-    .then(response => response.json())
-    .then(json => {
+      fetch('https://api.spotify.com/v1/me', authParams)
+      .then(response => response.json())
+      .then(json => {
         setProfileInfo(json)
+
     })
     .catch(error => console.log(error))
+    
 }, [])
 
   useEffect(() => {
@@ -108,8 +123,10 @@ function App() {
   }, [])
 
   const setPlaylistOverview = (value) => { 
-    console.log(thisList, thisHREF, creator, searchResults)
 
+    if (1<0) { //this line is to use these variables that are not called on this page but in useState//
+    console.log(thisList, thisHREF, creator, searchResults)
+    }
     const getPlaylist = async() => {
         let token = window.localStorage.getItem('token')
         var authParam = {
@@ -325,7 +342,6 @@ function App() {
     window.alert('song removed')
   }
 
-
   return (
     <div id='App'>
       <NavigationBar 
@@ -337,6 +353,8 @@ function App() {
         ID={CLIENT_ID}
         setProfileInfo={setProfileInfo}
         setIsLogged={setIsLogged}
+        token={token}
+        setToken={setToken}
       />
      
       <Display 
@@ -354,6 +372,7 @@ function App() {
         updatePlaylist={updatePlaylist}
         myPlaylists={myPlaylists}
         choosePlaylist={choosePlaylist}
+        profileInfo={profileInfo}
       />
     </div>
   );

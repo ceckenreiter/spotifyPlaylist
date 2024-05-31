@@ -2,11 +2,8 @@ import React from "react"
 import LinkToSpotifyButton from "../buttons/LinkToSpotifyButton"
 import "../css/AddToPlayListButton.css"
 
-function LoginPage (props, ID,token, setToken, setProfileInfo, setIsLogged) {
-
-
+function LoginPage (props, ID, token, setToken, setProfileInfo, setIsLogged) {
     return (
-
     <section id="startPage">
             <div className="button">
                 <LinkToSpotifyButton 
