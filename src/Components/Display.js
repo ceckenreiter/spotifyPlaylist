@@ -5,7 +5,7 @@ import Browse from "./Browse";
 
 
 function Display (props, state, setThisHREF, isLogged, setPlaylistOverview, searchInput, display, setSearchInput, setDisplay, albumList, trackList, createNewPlaylist, updatePlaylist, myPlaylists, choosePlaylist) {
-
+console.log(props.isLogged)
 if (props.isLogged===true) {
     return (
         <div className='SpecificContent'>
