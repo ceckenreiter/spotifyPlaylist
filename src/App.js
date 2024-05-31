@@ -125,7 +125,7 @@ function App() {
 
   const setPlaylistOverview = (value) => { 
 
-    if (1<0) { //this line is to use these variables that are not called //
+    if (1<0) { //this line is to use these variables that //
     console.log(thisList, thisHREF, creator, searchResults)
     }
     const getPlaylist = async() => {
