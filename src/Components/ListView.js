@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import ViewButton from "../buttons/ViewButton"
 
-function ListView (props, setThisHREF, href) {
+function ListView (props, setThisHREF, href, setPlaylistOverview) {
     
     const [thisPlaylist, setThisPlaylist]= useState([])
     const [theme, setTheme] = useState('')
@@ -43,6 +43,7 @@ function ListView (props, setThisHREF, href) {
                                 href={item.href} 
                                 setThisHREF={props.setThisHREF}
                                 number={3} 
+                                setPlaylistOverview={props.setPlaylistOverview}
                                 />
                         </div>
                     ))}  

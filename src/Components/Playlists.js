@@ -5,7 +5,7 @@ import ViewButton from "../buttons/ViewButton";
 
 
 
-function Playlists(props,thisHREF, setThisHREF, setDisplay, createNewPlaylist, myPlaylists) {
+function Playlists(props,thisHREF, setThisHREF, setDisplay, createNewPlaylist, myPlaylists, setPlaylistOverview) {
 
     return (
         <div>
@@ -18,6 +18,7 @@ function Playlists(props,thisHREF, setThisHREF, setDisplay, createNewPlaylist, m
                         setThisHREF={props.setThisHREF}
                         href={item.href} 
                         number={3} 
+                        setPlaylistOverview={props.setPlaylistOverview}
                     />
                 </div>
             ))}    

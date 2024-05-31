@@ -1,7 +1,6 @@
 import './css/App.css';
 import React, {useState, useEffect} from 'react';
 import LoginPage from './Components/LoginPage'
-import ProfileInformation from './Components/ProfileInformation'
 import GreetingsPage from './Components/GreetingsPage';
 import NavigationBar from './Components/NavigationBar';
 import Display from './Components/Display';
@@ -30,11 +29,27 @@ function App() {
 
   const CLIENT_ID = '740dffe0e2cd4743995272820b7f8ec8';
 
-  const random = () => {
-    console.log(creator)
-    console.log(thisList)
-    console.log(searchResults)
-  }
+  
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+
+    var authParams = {
+        method: 'GET', 
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/x-www-form-urelencoded"
+        },
+        scopes: 'user-read-private user-read-email'
+    }
+
+    fetch('https://api.spotify.com/v1/me', authParams)
+    .then(response => response.json())
+    .then(json => {
+        setProfileInfo(json)
+    })
+    .catch(error => console.log(error))
+}, [])
 
   useEffect(() => {
     let token = window.localStorage.getItem('token')
@@ -57,46 +72,6 @@ function App() {
     }
   }, [searchInput])
 
-  useEffect(() => {        
-    if (thisHREF !== '') {
-      const getPlaylist = async() => {
-        let token = window.localStorage.getItem('token')
-        var authParam = {
-          method: 'GET', 
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/x-www-form-urelencoded"
-          }
-        }
-        const result = await fetch(`${thisHREF}`, authParam)
-        const result2 = result.json()
-        result2.then(response => {
-          setPlaylistTitle(response.name)
-          setPlaylistDescription(response.description)
-          setCreator(response.owner.display_name)
-          setThisList(response.tracks.items)
-          setPlaylistID(response.id)
-          setDisplay(
-            <PlaylistOverview 
-              playlistID={response.id}
-              updatePlaylist={updatePlaylist}
-              deletePlaylist={deletePlaylist}
-              setDisplay={setDisplay}
-              thisList={response.tracks.items}
-              playlistTitle={response.name}
-              playlistDescription={response.description}
-              creator={response.owner.display_name}
-              profileInfo={profileInfo}
-              choosePlaylist={choosePlaylist}
-              myPlaylists={myPlaylists}
-              removeFromPlaylist={removeFromPlaylist}
-            />)
-        })
-        .catch(response => console.log(response))
-      }
-      getPlaylist()
-    }
-  }, [thisHREF, profileInfo])
 
   useEffect(() => {
     let token = window.localStorage.getItem('token')
@@ -128,10 +103,50 @@ function App() {
       .then(response => response.json())
       .then(result => { 
         setMyPlaylists(result.items)
-        random()
       })
       .catch(error => console.log(error))
   }, [])
+
+  const setPlaylistOverview = (value) => { 
+    console.log(value)
+    const getPlaylist = async() => {
+        let token = window.localStorage.getItem('token')
+        var authParam = {
+          method: 'GET', 
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/x-www-form-urelencoded"
+          }
+        }
+      await fetch(`${value}`, authParam)
+        .then(response =>  response.json())
+        .then(response => {
+          console.log(response)
+          setPlaylistTitle(response.name)
+          setPlaylistDescription(response.description)
+          setCreator(response.owner.display_name)
+          setThisList(response.tracks.items)
+          setPlaylistID(response.id)
+          setDisplay(
+            <PlaylistOverview 
+              playlistID={response.id}
+              updatePlaylist={updatePlaylist}
+              deletePlaylist={deletePlaylist}
+              setDisplay={setDisplay}
+              thisList={response.tracks.items}
+              playlistTitle={response.name}
+              playlistDescription={response.description}
+              creator={response.owner.display_name}
+              profileInfo={profileInfo}
+              choosePlaylist={choosePlaylist}
+              myPlaylists={myPlaylists}
+              removeFromPlaylist={removeFromPlaylist}
+            />)
+        })
+        .catch(response => console.log(response))
+      }
+    getPlaylist()
+  }
 
   const getMyPlaylists = () => {
     let token = window.localStorage.getItem('token')
@@ -309,6 +324,7 @@ function App() {
     window.alert('song removed')
   }
 
+
   return (
     <div id='App'>
       <NavigationBar 
@@ -321,10 +337,9 @@ function App() {
         setProfileInfo={setProfileInfo}
         setIsLogged={setIsLogged}
       />
-      <ProfileInformation 
-        setProfileInfo={setProfileInfo}
-      />
+     
       <Display 
+        setPlaylistOverview = {setPlaylistOverview}
         isLogged={isLogged}
         state={state}
         searchInput={searchInput}

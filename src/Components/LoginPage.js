@@ -2,7 +2,7 @@ import React from "react"
 import LinkToSpotifyButton from "../buttons/LinkToSpotifyButton"
 import "../css/AddToPlayListButton.css"
 
-function LoginPage (props, ID, setProfileInfo, setIsLogged) {
+function LoginPage (props, ID,token, setToken, setProfileInfo, setIsLogged) {
 
 
     return (
@@ -13,6 +13,8 @@ function LoginPage (props, ID, setProfileInfo, setIsLogged) {
                     ID={props.ID}
                     setProfileInfo={props.setProfileInfo}
                     setIsLogged={props.setIsLogged}
+                    token={props.token}
+                    setToken={props.setToken}
 
                  />
             </div>

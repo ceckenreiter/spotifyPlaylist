@@ -4,13 +4,14 @@ import ChangingBody from "./ChangingBody";
 import Browse from "./Browse";
 
 
-function Display (props, state, setThisHREF, isLogged, searchInput, display, setSearchInput, setDisplay, albumList, trackList, createNewPlaylist, updatePlaylist, myPlaylists, choosePlaylist) {
+function Display (props, state, setThisHREF, isLogged, setPlaylistOverview, searchInput, display, setSearchInput, setDisplay, albumList, trackList, createNewPlaylist, updatePlaylist, myPlaylists, choosePlaylist) {
 
 if (props.isLogged===true) {
     return (
         <div className='SpecificContent'>
             <div className='left'>
                 <Playlists 
+                    setPlaylistOverview={props.setPlaylistOverview}
                     thisHREF={props.thisHREF}
                     setThisHREF={props.setThisHREF}
                     setDisplay={props.setDisplay}
@@ -31,6 +32,7 @@ if (props.isLogged===true) {
                 />
                 <Browse 
                     setDisplay={props.setDisplay}
+                    setPlaylistOverview={props.setPlaylistOverview}
                     state={props.state}
                     setThisHREF={props.setThisHREF}
                 />

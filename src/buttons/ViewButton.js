@@ -3,7 +3,7 @@ import ArtistAlbumView from '../Components/ArtistAlbumView'
 import ListView from "../Components/ListView";
 
 
-function ViewButton (props, setThisHREF, setDisplay, number, id, href, choosePlaylist, myPlaylists) {
+function ViewButton (props, setThisHREF, setDisplay, number, id, href, choosePlaylist, myPlaylists, setPlaylistOverview) {
 
     const handleClick = (e) => {
 
@@ -21,11 +21,19 @@ function ViewButton (props, setThisHREF, setDisplay, number, id, href, choosePla
                 <ListView 
                     href={props.href} 
                     setThisHREF={props.setThisHREF}
+                    setPlaylistOverview={props.setPlaylistOverview}
                 />)
         } else if (props.number===3) {
             props.setThisHREF(props.href)
-
-
+            const changePlaylist = async() => {
+                 const blank = () => {
+                    props.setThisHREF(props.href)
+                    return props.href
+                }
+                const value = await blank()
+                props.setPlaylistOverview(value);
+            }
+            changePlaylist()
         }
     }
 

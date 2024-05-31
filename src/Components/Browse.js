@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import '../css/Browse.css'
 import ViewButton from '../buttons/ViewButton' 
 
-function Browse (props, setThisHREF, state, setDisplay) {
+function Browse (props, setThisHREF, state, setDisplay, setPlaylistOverview) {
 
     
     return (
@@ -18,6 +18,7 @@ function Browse (props, setThisHREF, state, setDisplay) {
                                     href={item.href}
                                     number={2}
                                     setDisplay={props.setDisplay}
+                                    setPlaylistOverview={props.setPlaylistOverview}
                                 />
                             </div>
                         ))}  
