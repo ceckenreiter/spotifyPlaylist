@@ -34,6 +34,7 @@ function App() {
   useEffect(() => {
     const token = window.localStorage.getItem('token')
 
+
     var authParams = {
         method: 'GET', 
         headers: {
@@ -72,7 +73,6 @@ function App() {
     }
   }, [searchInput])
 
-
   useEffect(() => {
     let token = window.localStorage.getItem('token')
     var authParam = {
@@ -108,7 +108,8 @@ function App() {
   }, [])
 
   const setPlaylistOverview = (value) => { 
-    console.log(value)
+    console.log(thisList, thisHREF, creator, searchResults)
+
     const getPlaylist = async() => {
         let token = window.localStorage.getItem('token')
         var authParam = {
