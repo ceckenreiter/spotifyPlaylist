@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
 function LinkToSpotifyButton (props, token, setToken, setProfileInfo, ID, setIsLogged) {
 
